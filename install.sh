@@ -25,40 +25,6 @@ checkExitCode() {
   fi
 }
 
-installRPM() {
-  echo 'rpm'
-}
-
-installDEB() {
-  echo 'deb'
-}
-
-downloadStatus() {
-  if [ -f $1 ]; then
-    while : ; do
-      sleep 1
-
-      local speed=$(echo `cat $1 | grep -oh '\([0-9.]\+[%].*[0-9.][s|m|h|d]\)' | tail -1`)
-      echo -n "$speed"
-      echo -n R | tr 'R' '\r'
-      # evaluate exit code?
-      if [ -f $2 ]; then
-        sleep 1
-        local error=$(echo `cat $2`)
-        if [ $error != '0' ]; then
-          if [ $error == '6' ]; then
-            echo "Server authentication error, configure setup.ini properly. See $OUTPUTLOG"
-          else
-            echo "Download error, exit code $2. See $OUTPUTLOG"
-          fi
-          exit $?
-        fi
-        break
-      fi
-    done
-  fi
-}
-
 # check OS architecture
 if [ "`uname -m`" != "x86_64" ]; then
    echo "FrontStack only supports 64 bit based OS. Cannot continue"
@@ -115,6 +81,9 @@ sleep 1
 
 $DLBIN http://yahoo.com > $OUTPUTLOG 2>&1
 checkExitCode "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $OUTPUTLOG"
+if [ -f "./*.html" ]; then
+  rm -rf "./*.html"
+fi
 
 if [ `exists VirtualBox` -eq 0 ]; then
   echo 'VirtualBox not found on the system.\nYou must install it before continue'
@@ -144,10 +113,24 @@ else
   fi
 fi
 
-echo 'Downloading file...'
+echo 'Downloading FrontStack Vagrant files...'
 
 `$DLBIN INSTALLURL` > $OUTPUTLOG 2>&1
 checkExitCode "Error while downloading the package... See $OUTPUTLOG"
 
+tar xvfz ./master.tar.gz -C "$installpath" >> $OUTPUTLOG 2>&1
+checkExitCode "Error while uncompressing the package... See $OUTPUTLOG"
+rm -rf master.tar.gz
+
+cat <<EOF
+
+FrontStack VM config installed in '$installpath'
+
+1. Customize the Vagrantfile
+2. Customize scripts/setup.ini
+3. Run $ vagrant up
+4. Enjoy and code!
+
+EOF
 
 
