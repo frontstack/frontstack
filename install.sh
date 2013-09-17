@@ -48,6 +48,8 @@ fi
 DLBIN=`which curl`
 if [ -n $DLBIN ]; then
   DLBIN="`which wget` -F "
+else
+  DLBIN="$DLBIN -s " 
 fi
 
 cat <<EOF
