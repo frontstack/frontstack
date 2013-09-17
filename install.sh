@@ -49,7 +49,7 @@ DLBIN=`which curl`
 if [ -n $DLBIN ]; then
   DLBIN="`which wget` -F "
 else
-  DLBIN="$DLBIN -s " 
+  DLBIN="$DLBIN -ss " 
 fi
 
 cat <<EOF
@@ -107,12 +107,17 @@ fi
 
 read -p "Installation path (defaults to '$HOME'): " installpath
 if [ -z $installpath ]; then
-  installpath=$HOME
+  installpath=$HOME/frontstack
 else
   if [ ! -d $installpath ]; then
     echo "'$installpath' is not a directory or not exists. Exiting"
     exit 1
   fi
+fi
+
+if [ ! -d $installpath ]; then
+  mkdir "$installpath"
+  checkExitCode "Cannot create the installation directory '$installpath'. Cannot continue"
 fi
 
 echo 'Downloading FrontStack Vagrant files...'
