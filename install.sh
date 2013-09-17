@@ -45,11 +45,10 @@ else
 fi
 
 # discover the http client
-DLBIN=`which curl`
-if [ -n $DLBIN ]; then
-  DLBIN="`which wget` -F "
+if [ `exists curl` -eq 1 ]; then
+  DLBIN="`which curl` -s " 
 else
-  DLBIN="$DLBIN -ss " 
+  DLBIN="`which wget` -F "
 fi
 
 cat <<EOF
@@ -127,7 +126,10 @@ checkExitCode "Error while downloading the package... See $OUTPUTLOG"
 
 tar xvfz ./master.tar.gz -C "$installpath" >> $OUTPUTLOG 2>&1
 checkExitCode "Error while uncompressing the package... See $OUTPUTLOG"
+
+# clean files
 rm -rf master.tar.gz
+rm -rf $OUTPUTLOG
 
 cat <<EOF
 
