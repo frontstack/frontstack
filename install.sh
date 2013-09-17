@@ -70,7 +70,7 @@ cat <<EOF
   * 1GB of hard disk free space
   * Internet access (HTTP/s protocol)
   * VirtualBox
-  * Vagrant
+  * Vagrant 
 
 
 EOF
@@ -135,17 +135,25 @@ checkExitCode "Error while downloading the package... See $OUTPUTLOG"
 tar xvfz ./$FILENAME -C "$installpath" >> $OUTPUTLOG 2>&1
 checkExitCode "Error while uncompressing the package... See $OUTPUTLOG"
 
-# move files
+# move files to root
 cp -R "$installpath"/vagrant-master/* "$installpath"
-rm -rf "$installpath/vagrant-master"
 
 # clean files
+rm -rf "$installpath/vagrant-master"
 rm -rf $FILENAME
 rm -rf $OUTPUTLOG
 
-cat <<EOF
+# auto start VM
+echo 
+read -p 'Do you want to start the VM [y/N]: ' res
+if [ $res == 'y' ] || [ $res == 'Y' ]; then
+  cd $installpath
+  vagrant up
+else 
 
-FrontStack VM config installed in '$installpath'
+  cat <<EOF
+
+FrontStack Vagrant installed in '$installpath'
 
 1. Customize the Vagrantfile
 2. Customize scripts/setup.ini
@@ -153,4 +161,7 @@ FrontStack VM config installed in '$installpath'
 4. Enjoy and code!
 
 EOF
+
+fi
+
 
