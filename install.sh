@@ -47,7 +47,7 @@ fi
 
 # discover the http client
 if [ `exists curl` -eq 1 ]; then
-  DLBIN="`which curl` -s -o $FILENAME " 
+  DLBIN="`which curl` -L -s -o $FILENAME " 
 else
   DLBIN="`which wget` -F -O $FILENAME "
 fi
@@ -82,8 +82,8 @@ sleep 1
 
 $DLBIN http://yahoo.com > $OUTPUTLOG 2>&1
 checkExitCode "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $OUTPUTLOG"
-if [ -f "./*.html" ]; then
-  rm -rf "./*.html"
+if [ -f "./index.html" ]; then
+  rm -rf "./index.html"
 fi
 
 if [ `exists VirtualBox` -eq 0 ]; then
@@ -117,6 +117,15 @@ fi
 if [ ! -d $installpath ]; then
   mkdir "$installpath"
   checkExitCode "Cannot create the installation directory '$installpath'. Cannot continue"
+else
+  if [ -f $installpath/Vagrantfile ]; then
+    echo "Another installation was found in '$installpath'"
+    read -p 'Do you want to override it? [Y/n]: ' res
+    if [ $res == 'n' ] || [ $res == 'N' ]; then
+      echo 'Exiting'
+      exit 0
+    fi
+  fi
 fi
 
 echo 'Downloading FrontStack Vagrant files...'
@@ -126,6 +135,10 @@ checkExitCode "Error while downloading the package... See $OUTPUTLOG"
 
 tar xvfz ./$FILENAME -C "$installpath" >> $OUTPUTLOG 2>&1
 checkExitCode "Error while uncompressing the package... See $OUTPUTLOG"
+
+# move files
+cp -R "$installpath/vagrant-master/* $installpath"
+rm -rf "$installpath/vagrant-master"
 
 # clean files
 rm -rf $FILENAME
