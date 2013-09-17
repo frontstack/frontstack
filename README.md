@@ -23,7 +23,7 @@ Setup FrontStack environment in a few minutes
 3. Run the installer
 
 ```shell
-$ curl https://raw.github.com/frontstack/frontstack/master/install.sh | bash
+$ curl https://raw.github.com/frontstack/frontstack/master/install.sh -s > install.sh && bash install.sh
 ```
 
 4. Enjoy and code!
