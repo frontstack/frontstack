@@ -69,7 +69,6 @@ cat <<EOF
   * 768MB RAM
   * 1GB of hard disk free space
   * Internet access (HTTP/s protocol)
-  * Root access level
   * VirtualBox
   * Vagrant
 
@@ -137,7 +136,7 @@ tar xvfz ./$FILENAME -C "$installpath" >> $OUTPUTLOG 2>&1
 checkExitCode "Error while uncompressing the package... See $OUTPUTLOG"
 
 # move files
-cp -R "$installpath/vagrant-master/* $installpath"
+cp -R "$installpath"/vagrant-master/* "$installpath"
 rm -rf "$installpath/vagrant-master"
 
 # clean files
