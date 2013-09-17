@@ -81,7 +81,7 @@ fi
 # discover the http client
 DLBIN=`which curl`
 if [ -n $DLBIN ]; then
-  DLBIN=`which wget` ' -F '
+  DLBIN="`which wget` -F "
 fi
 
 cat <<EOF
@@ -114,7 +114,7 @@ sleep 1
 # checking prerequirements
 
 $DLBIN http://yahoo.com > $OUTPUTLOG 2>&1
-checkExitCode "No Internet HTTP connectivity.\nCheck if you are behind a proxy and your authentication credentials.\nSee $OUTPUTLOG"
+checkExitCode "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $OUTPUTLOG"
 
 if [ `exists VirtualBox` -eq 0 ]; then
   echo 'VirtualBox not found on the system.\nYou must install it before continue'
@@ -127,7 +127,6 @@ if [ `exists vagrant` -eq 0 ]; then
   echo 'http://downloads.vagrantup.com/'
   exit 1
 fi
-
 
 read -p 'Do you want to install FrontStack [Y/n]: ' res
 if [ $res == 'n' ] || [ $res == 'N' ]; then
@@ -149,7 +148,6 @@ echo 'Downloading file...'
 
 `$DLBIN INSTALLURL` > $OUTPUTLOG 2>&1
 checkExitCode "Error while downloading the package... See $OUTPUTLOG"
-
 
 
 
