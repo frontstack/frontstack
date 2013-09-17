@@ -16,17 +16,17 @@ Development environment made easy for modern web projects
 
 Setup FrontStack environment in a few minutes
 
-#### 1. [Download](https://www.virtualbox.org/wiki/Downloads) and install VirtualBox
+1. [Download](https://www.virtualbox.org/wiki/Downloads) and install VirtualBox
 
-#### 2. [Download](http://downloads.vagrantup.com/) and install Vagrant
+2. [Download](http://downloads.vagrantup.com/) and install Vagrant
 
-#### 3. Run the installer
+3. Run the installer
 
 ```shell
-$ curl https://raw.github.com/h2non/frontstack/master/install.sh | bash
+$ curl https://raw.github.com/frontstack/frontstack/master/install.sh | bash
 ```
 
-#### 4. Enjoy it!
+4. Enjoy and code!
 
 
 ## About
