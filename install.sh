@@ -7,7 +7,7 @@
 #
 
 OUTPUTLOG='./frontstack.log'
-INSTALLURL="https://github.com/frontstack/vagrant/archive/master.tar.gz"
+DOWNLOAD="https://github.com/frontstack/vagrant/archive/master.tar.gz"
 FILENAME='frontstack-vagrant.tar.gz'
 
 exists() {
@@ -121,14 +121,14 @@ fi
 
 echo 'Downloading FrontStack Vagrant files...'
 
-`$DLBIN INSTALLURL` > $OUTPUTLOG 2>&1
+$DLBIN $DOWNLOAD > $OUTPUTLOG 2>&1
 checkExitCode "Error while downloading the package... See $OUTPUTLOG"
 
-tar xvfz ./master.tar.gz -C "$installpath" >> $OUTPUTLOG 2>&1
+tar xvfz ./$FILENAME -C "$installpath" >> $OUTPUTLOG 2>&1
 checkExitCode "Error while uncompressing the package... See $OUTPUTLOG"
 
 # clean files
-rm -rf master.tar.gz
+rm -rf $FILENAME
 rm -rf $OUTPUTLOG
 
 cat <<EOF
