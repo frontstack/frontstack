@@ -8,6 +8,7 @@
 
 OUTPUTLOG='./frontstack.log'
 INSTALLURL="https://github.com/frontstack/vagrant/archive/master.tar.gz"
+FILENAME='frontstack-vagrant.tar.gz'
 
 exists() {
   type $1 >/dev/null 2>&1;
@@ -46,19 +47,18 @@ fi
 
 # discover the http client
 if [ `exists curl` -eq 1 ]; then
-  DLBIN="`which curl` -s " 
+  DLBIN="`which curl` -s -o $FILENAME " 
 else
-  DLBIN="`which wget` -F "
+  DLBIN="`which wget` -F -O $FILENAME "
 fi
 
 cat <<EOF
+
  -------------------------------------
          Welcome to FrontStack
  -------------------------------------
-   A modern, modular, fully portable 
-          and multilanguage 
-     software stack solution for 
-   modern Web projects development
+   Development environment made easy 
+       for modern web projects 
  -------------------------------------
 
  OS detected: $OS
@@ -141,5 +141,4 @@ FrontStack VM config installed in '$installpath'
 4. Enjoy and code!
 
 EOF
-
 
