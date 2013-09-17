@@ -2,7 +2,7 @@
 
 ### `Still beta`
 
-A complete, modular, fully portable and multilanguage software stack solution for modern Web projects development
+Development environment made easy for modern web projects 
 
 ## Requirements
 
