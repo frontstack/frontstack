@@ -143,14 +143,17 @@ rm -rf "$installpath/vagrant-master"
 rm -rf $FILENAME
 rm -rf $OUTPUTLOG
 
+# configure Vagrant
+cd $installpath
+# todo: install FrontStack plugin
+vagrant plugin install vagrant-vbguest
+
 # auto start VM
 echo 
 read -p 'Do you want to start the VM [y/N]: ' res
 if [ $res == 'y' ] || [ $res == 'Y' ]; then
-  cd $installpath
   vagrant up
 else 
-
   cat <<EOF
 
 FrontStack Vagrant installed in '$installpath'
