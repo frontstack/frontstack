@@ -144,14 +144,16 @@ rm -rf $FILENAME
 rm -rf $OUTPUTLOG
 
 # configure Vagrant
-cd $installpath
+echo 'Configuring Vagrant...'
 # todo: install FrontStack plugin
-vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-vbguest >> $OUTPUTLOG 2>&1
+checkExitCode "Error while installing Vagrant plugin... See $OUTPUTLOG"
 
 # auto start VM
 echo 
 read -p 'Do you want to start the VM [y/N]: ' res
 if [ $res == 'y' ] || [ $res == 'Y' ]; then
+  cd $installpath
   vagrant up
 else 
   cat <<EOF
