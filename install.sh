@@ -64,10 +64,9 @@ cat <<EOF
  OS detected: $OS
 
  Requirements:
-  * 64 bits processor
-  * GNU/Linux 64 bits
-  * 768MB RAM
-  * 1GB of hard disk free space
+  * 64 bit OS
+  * 2GB RAM
+  * 2GB of hard disk free space
   * Internet access (HTTP/s protocol)
   * VirtualBox
   * Vagrant 
