@@ -1,46 +1,56 @@
-# FrontStack
+# FrontStack Vagrant
 
 ### `Still beta`
 
-Development environment made easy for modern web projects 
+A Fully portable, self-contained, generic, modular and multi-language development environment stack for GNU/Linux 64 bits based OS for Front End projects.
 
-## Requirements
+# Getting started
 
-* 64 bit processor and OS
-- 3GB of hard disk free space
-- At least 2GB of RAM
-- Administrator/root access level
-- Be tired about development environments
+## Host requirements
+
+  * 64 bit processor
+  * GNU/Linux 64 bits
+  * 1GB RAM
+  * 1GB of hard disk free space
+  * Internet access (HTTP/S)
 
 ## Installation
 
-Setup FrontStack environment in a few minutes
+### GNU/Linux
 
-1. [Download](https://www.virtualbox.org/wiki/Downloads) and install VirtualBox
+Simply download the setup.sh and configure the setup.ini file with your custom settings.
 
-2. [Download](http://downloads.vagrantup.com/) and install Vagrant
+You can provision you machine downloading a full stack release version (tar.gz, 7z , package-specific OS) or publish the individual packages in your own repository.
+See the development documentation (TODO)
 
-3. Run the installer
+### Others
 
-```shell
-$ curl https://raw.github.com/frontstack/frontstack/master/install.sh -s > install.sh && bash install.sh
-```
+The FrontStack distribution is only available for GNU/Linux, however you can use it in  other OS easily using VirtualBox and Vagrant
 
-4. Enjoy and code!
+1. Download [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your OS (64 bits)
+2. Download [Vagrant](http://downloads.vagrantup.com/) for your OS (64 bits)
+3. Download [FrontStack] for VM installations
+4. Customize `Vagrantfile` and `setup.ini`
+5. Run `$ vagrant up`
 
+##### Virtualization troubles
 
-## About
+If you have some Virtualbox problems while trying to boot the VM and get a message like 
+`processor architecture is not 64 bits` and you are sure your processor it is, you should 
+try to enable the VT-x/AMD virtualization technology from your BIOS.
 
-`TODO`
+## Customize FrontStack
 
-## Customize
+`TODO...`
 
-`TODO`
+## TODO
 
-## Stack
+* Vagrant plugin
 
-`TODO`
+## Authors
 
-## Windows support
+* [Tomas Aparicio](https://github.com/h2non) 
 
-`TODO`
+## License
+
+Code under [WTFPL](http://www.wtfpl.net/txt/copying/) license

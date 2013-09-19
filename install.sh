@@ -5,6 +5,10 @@
 # @version 0.1
 # @license WTFPL
 #
+# Optional arguments:
+#   -f <1>            [force installation without asking]
+#   -p <installpath>  [installation path]
+#
 
 OUTPUTLOG='./frontstack.log'
 DOWNLOAD="https://github.com/frontstack/vagrant/archive/master.tar.gz"
@@ -32,6 +36,19 @@ checkExitCode() {
     cleanFiles
     [ -z $2 ] && exit 1
   fi
+}
+
+installedMsg() {
+      cat <<EOF
+
+FrontStack Vagrant installed in '$installpath'
+
+1. Customize the Vagrantfile
+2. Customize setup.ini and aditional provisioning scripts
+3. Run $ vagrant up
+4. Start coding!
+
+EOF
 }
 
 # check OS architecture
@@ -102,16 +119,27 @@ if [ `exists vagrant` -eq 0 ]; then
   exit 1
 fi
 
-read -p 'Do you want to install FrontStack [Y/n]: ' res
-if [ $res == 'n' ] || [ $res == 'N' ]; then
-  echo 'Exiting'
-  exit 0
+while getopts "f:p:" OPTION; do
+  case "$OPTION" in
+    f)
+       force=1
+       ;;
+    p)
+       installpath="$OPTARG"
+       ;;
+  esac
+done
+
+if [ -z $force ]; then 
+  read -p 'Do you want to install FrontStack [Y/n]: ' res
+  if [ $res == 'n' ] || [ $res == 'N' ]; then
+    echo 'Exiting'
+    exit 0
+  fi
 fi
 
 # supports first argument for path installation
-if [ ! -z $1 ] && [ -d "$1" ]; then
-  installpath="$1"
-else
+if [ -z $installpath ]; then
   read -p "Installation path (defaults to '$HOME'): " installpath
 fi
 
@@ -128,7 +156,7 @@ if [ ! -d $installpath ]; then
   mkdir "$installpath"
   checkExitCode "Cannot create the installation directory '$installpath'. Cannot continue"
 else
-  if [ -f $installpath/Vagrantfile ]; then
+  if [ -z $force ] && [ -f $installpath/Vagrantfile ]; then
     echo "Another installation was found in '$installpath'"
     read -p 'Do you want to override it? [Y/n]: ' res
     if [ $res == 'n' ] || [ $res == 'N' ]; then
@@ -154,29 +182,22 @@ rm -rf "$installpath/vagrant-master"
 cleanFiles
 
 # configure Vagrant
-if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ];
+if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ]; then
   echo 'Configuring Vagrant...'
   vagrant plugin install vagrant-vbguest >> $OUTPUTLOG 2>&1
   checkExitCode "Error while installing Vagrant plugin... See $OUTPUTLOG" 1
 fi
 
 # auto start VM
-echo 
-read -p 'Do you want to start the VM [y/N]: ' res
-if [ $res == 'y' ] || [ $res == 'Y' ]; then
-  cd $installpath
-  vagrant up
-else 
-  cat <<EOF
-
-FrontStack Vagrant installed in '$installpath'
-
-1. Customize the Vagrantfile
-2. Customize setup.ini and aditional provisioning scripts
-3. Run $ vagrant up
-4. Start coding!
-
-EOF
-
+if [ -z $force ]; then
+  echo 
+  read -p 'Do you want to start the VM [y/N]: ' res
+  if [ $res == 'y' ] || [ $res == 'Y' ]; then
+    cd $installpath
+    vagrant up
+  else 
+    installedMsg
+  fi
+else
+  installedMsg
 fi
-
