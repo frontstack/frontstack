@@ -9,6 +9,13 @@
 OUTPUTLOG='./frontstack.log'
 DOWNLOAD="https://github.com/frontstack/vagrant/archive/master.tar.gz"
 FILENAME='frontstack-vagrant.tar.gz'
+TESTCON='test.html'
+
+cleanFiles() {
+  rm -rf $FILENAME
+  rm -rf $OUTPUTLOG
+  rm -rf $TESTCON
+}
 
 exists() {
   type $1 >/dev/null 2>&1;
@@ -22,13 +29,14 @@ exists() {
 checkExitCode() {
   if [ $? -ne 0 ]; then
     echo $1
+    cleanFiles
     [ -z $2 ] && exit 1
   fi
 }
 
 # check OS architecture
 if [ "`uname -m`" != "x86_64" ]; then
-   echo "FrontStack only supports 64 bit based OS. Cannot continue"
+   echo "FrontStack only supports 64 bit OS. Cannot continue"
    exit 1
 fi
 
@@ -47,9 +55,9 @@ fi
 
 # discover the http client
 if [ `exists curl` -eq 1 ]; then
-  DLBIN="`which curl` -L -s -o $FILENAME " 
+  DLBIN="`which curl` -L -s -o " 
 else
-  DLBIN="`which wget` -F -O $FILENAME "
+  DLBIN="`which wget` -F -O "
 fi
 
 cat <<EOF
@@ -78,7 +86,7 @@ sleep 1
 
 # checking prerequirements
 
-$DLBIN http://yahoo.com > $OUTPUTLOG 2>&1
+$DLBIN $TESTCON http://yahoo.com > $OUTPUTLOG 2>&1
 checkExitCode "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $OUTPUTLOG"
 if [ -f "./index.html" ]; then
   rm -rf "./index.html"
@@ -102,7 +110,13 @@ if [ $res == 'n' ] || [ $res == 'N' ]; then
   exit 0
 fi
 
-read -p "Installation path (defaults to '$HOME'): " installpath
+# supports first argument for path installation
+if [ ! -z $1 ] && [ -d "$1" ];
+  installpath="$1"
+else
+  read -p "Installation path (defaults to '$HOME'): " installpath
+fi
+
 if [ -z $installpath ]; then
   installpath=$HOME/frontstack
 else
@@ -128,19 +142,18 @@ fi
 
 echo 'Downloading FrontStack Vagrant files...'
 
-$DLBIN $DOWNLOAD > $OUTPUTLOG 2>&1
-checkExitCode "Error while downloading the package... See $OUTPUTLOG"
+$DLBIN $FILENAME $DOWNLOAD > $OUTPUTLOG 2>&1
+checkExitCode "Error while downloading the package Vagrant from Github... See $OUTPUTLOG"
 
 tar xvfz ./$FILENAME -C "$installpath" >> $OUTPUTLOG 2>&1
 checkExitCode "Error while uncompressing the package... See $OUTPUTLOG"
 
-# move files to root
+# move files to root directory
 cp -R "$installpath"/vagrant-master/* "$installpath"
 
 # clean files
 rm -rf "$installpath/vagrant-master"
-rm -rf $FILENAME
-rm -rf $OUTPUTLOG
+cleanFiles
 
 # configure Vagrant
 echo 'Configuring Vagrant...'
@@ -160,12 +173,11 @@ else
 FrontStack Vagrant installed in '$installpath'
 
 1. Customize the Vagrantfile
-2. Customize scripts/setup.ini
+2. Customize setup.ini and aditional provisioning scripts
 3. Run $ vagrant up
-4. Enjoy and code!
+4. Start coding!
 
 EOF
 
 fi
-
 
