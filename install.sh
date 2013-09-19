@@ -22,7 +22,7 @@ exists() {
 checkExitCode() {
   if [ $? -ne 0 ]; then
     echo $1
-    exit 1
+    [ -z $2 ] && exit 1
   fi
 }
 
@@ -146,7 +146,7 @@ rm -rf $OUTPUTLOG
 echo 'Configuring Vagrant...'
 # todo: install FrontStack plugin
 vagrant plugin install vagrant-vbguest >> $OUTPUTLOG 2>&1
-checkExitCode "Error while installing Vagrant plugin... See $OUTPUTLOG"
+checkExitCode "Error while installing Vagrant plugin... See $OUTPUTLOG" 1
 
 # auto start VM
 echo 
