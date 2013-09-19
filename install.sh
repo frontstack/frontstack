@@ -11,7 +11,7 @@ DOWNLOAD="https://github.com/frontstack/vagrant/archive/master.tar.gz"
 FILENAME='frontstack-vagrant.tar.gz'
 TESTCON='test.html'
 
-cleanFiles() {
+cleanFiles() {
   rm -rf $FILENAME
   rm -rf $OUTPUTLOG
   rm -rf $TESTCON
@@ -82,14 +82,12 @@ cat <<EOF
 
 EOF
 
-sleep 1
-
 # checking prerequirements
 
-$DLBIN $TESTCON http://yahoo.com > $OUTPUTLOG 2>&1
+$DLBIN $ http://yahoo.com > $OUTPUTLOG 2>&1
 checkExitCode "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $OUTPUTLOG"
-if [ -f "./index.html" ]; then
-  rm -rf "./index.html"
+if [ -f "./$TESTCON" ]; then
+  rm -rf "./$TESTCON"
 fi
 
 if [ `exists VirtualBox` -eq 0 ]; then
@@ -111,7 +109,7 @@ if [ $res == 'n' ] || [ $res == 'N' ]; then
 fi
 
 # supports first argument for path installation
-if [ ! -z $1 ] && [ -d "$1" ];
+if [ ! -z $1 ] && [ -d "$1" ]; then
   installpath="$1"
 else
   read -p "Installation path (defaults to '$HOME'): " installpath
@@ -156,10 +154,11 @@ rm -rf "$installpath/vagrant-master"
 cleanFiles
 
 # configure Vagrant
-echo 'Configuring Vagrant...'
-# todo: install FrontStack plugin
-vagrant plugin install vagrant-vbguest >> $OUTPUTLOG 2>&1
-checkExitCode "Error while installing Vagrant plugin... See $OUTPUTLOG" 1
+if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ];
+  echo 'Configuring Vagrant...'
+  vagrant plugin install vagrant-vbguest >> $OUTPUTLOG 2>&1
+  checkExitCode "Error while installing Vagrant plugin... See $OUTPUTLOG" 1
+fi
 
 # auto start VM
 echo 
