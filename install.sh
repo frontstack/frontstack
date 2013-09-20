@@ -10,15 +10,15 @@
 #   -p <installpath>  [installation path]
 #
 
-OUTPUTLOG='./frontstack.log'
-DOWNLOAD="https://github.com/frontstack/vagrant/archive/master.tar.gz"
-FILENAME='frontstack-vagrant.tar.gz'
-TESTCON='test.html'
+output='./frontstack.log'
+download="https://github.com/frontstack/vagrant/archive/master.tar.gz"
+filename='frontstack-vagrant.tar.gz'
+testcon='test.html'
 
-cleanFiles() {
-  rm -rf $FILENAME
-  rm -rf $OUTPUTLOG
-  rm -rf $TESTCON
+clean_files() {
+  rm -rf $filename
+  rm -rf $output
+  rm -rf $testcon
 }
 
 exists() {
@@ -30,15 +30,15 @@ exists() {
   fi
 }
 
-checkExitCode() {
+check_exit() {
   if [ $? -ne 0 ]; then
     echo $1
-    cleanFiles
+    clean_files
     [ -z $2 ] && exit 1
   fi
 }
 
-installedMsg() {
+installion_success() {
       cat <<EOF
 
 FrontStack Vagrant installed in '$installpath'
@@ -72,9 +72,9 @@ fi
 
 # discover the http client
 if [ `exists curl` -eq 1 ]; then
-  DLBIN="`which curl` -L -s -o " 
+  dl_binary="`which curl` -L -s -o " 
 else
-  DLBIN="`which wget` -F -O "
+  dl_binary="`which wget` -F -O "
 fi
 
 cat <<EOF
@@ -101,10 +101,10 @@ EOF
 
 # checking prerequirements
 
-$DLBIN $ http://yahoo.com > $OUTPUTLOG 2>&1
-checkExitCode "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $OUTPUTLOG"
-if [ -f "./$TESTCON" ]; then
-  rm -rf "./$TESTCON"
+$dl_binary $ http://yahoo.com > $output 2>&1
+check_exit "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $output"
+if [ -f "./$testcon" ]; then
+  rm -rf "./$testcon"
 fi
 
 if [ `exists VirtualBox` -eq 0 ]; then
@@ -154,7 +154,7 @@ fi
 
 if [ ! -d $installpath ]; then
   mkdir "$installpath"
-  checkExitCode "Cannot create the installation directory '$installpath'. Cannot continue"
+  check_exit "Cannot create the installation directory '$installpath'. Cannot continue"
 else
   if [ -z $force ] && [ -f $installpath/Vagrantfile ]; then
     echo "Another installation was found in '$installpath'"
@@ -168,24 +168,24 @@ fi
 
 echo 'Downloading FrontStack Vagrant files...'
 
-$DLBIN $FILENAME $DOWNLOAD > $OUTPUTLOG 2>&1
-checkExitCode "Error while downloading the package Vagrant from Github... See $OUTPUTLOG"
+$dl_binary $filename $download > $output 2>&1
+check_exit "Error while downloading the package Vagrant from Github... See $output"
 
-tar xvfz ./$FILENAME -C "$installpath" >> $OUTPUTLOG 2>&1
-checkExitCode "Error while uncompressing the package... See $OUTPUTLOG"
+tar xvfz ./$filename -C "$installpath" >> $output 2>&1
+check_exit "Error while uncompressing the package... See $output"
 
 # move files to root directory
 cp -R "$installpath"/vagrant-master/* "$installpath"
 
 # clean files
 rm -rf "$installpath/vagrant-master"
-cleanFiles
+clean_files
 
 # configure Vagrant
 if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ]; then
   echo 'Configuring Vagrant...'
-  vagrant plugin install vagrant-vbguest >> $OUTPUTLOG 2>&1
-  checkExitCode "Error while installing Vagrant plugin... See $OUTPUTLOG" 1
+  vagrant plugin install vagrant-vbguest >> $output 2>&1
+  check_exit "Error while installing Vagrant plugin... See $output" 1
 fi
 
 # auto start VM
@@ -196,8 +196,8 @@ if [ -z $force ]; then
     cd $installpath
     vagrant up
   else 
-    installedMsg
+    installion_success
   fi
 else
-  installedMsg
+  installion_success
 fi
