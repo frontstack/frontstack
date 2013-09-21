@@ -14,7 +14,6 @@ output='frontstack.log'
 vagrant_download="https://github.com/frontstack/vagrant/archive/master.tar.gz"
 filename='frontstack-vagrant.tar.gz'
 testcon='test.html'
-virtualize=1
 
 clean_files() {
   rm -rf $filename
@@ -110,24 +109,20 @@ fi
 
 if [ $os == 'GNU/Linux' ]; then
   echo 'You are running GNU/Linux :)'
-  read -p 'Do you want to virtualize FrontStack anyway? [Y/n]: ' res 
-  if [ $res != 'y' ] && [ $res != 'Y' ]; then
-    virtualize=0
-  fi 
+  echo 'Note that you can use FrontStack without virtualization!'
+  sleep 1
 fi
 
-if [ $virtualize == '1' ]; then
-  if [ `exists VirtualBox` -eq 0 ]; then
-    echo 'VirtualBox not found on the system. You must install it before continue'
-    echo 'https://www.virtualbox.org/wiki/Downloads'
-    exit 1
-  fi
+if [ `exists VirtualBox` -eq 0 ]; then
+  echo 'VirtualBox not found on the system. You must install it before continue'
+  echo 'https://www.virtualbox.org/wiki/Downloads'
+  exit 1
+fi
 
-  if [ `exists vagrant` -eq 0 ]; then
-    echo 'Vagrant not found on the system. You must install it before continue'
-    echo 'http://downloads.vagrantup.com/'
-    exit 1
-  fi
+if [ `exists vagrant` -eq 0 ]; then
+  echo 'Vagrant not found on the system. You must install it before continue'
+  echo 'http://downloads.vagrantup.com/'
+  exit 1
 fi
 
 while getopts "f:p:" OPTION; do
@@ -192,28 +187,23 @@ cp -R "$installpath"/vagrant-master/* "$installpath"
 rm -rf "$installpath/vagrant-master"
 clean_files
 
-if [ $virtualize != '1' ]; then
-  sudo bash $installpath/scripts/setup.sh
-  installion_success
-else
-  # configure Vagrant
-  if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ]; then
-    echo 'Configuring Vagrant...'
-    vagrant plugin install vagrant-vbguest >> $output 2>&1
-    check_exit "Error while installing Vagrant plugin... See $output" 1
-  fi
+# configure Vagrant
+if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ]; then
+  echo 'Configuring Vagrant...'
+  vagrant plugin install vagrant-vbguest >> $output 2>&1
+  check_exit "Error while installing Vagrant plugin... See $output" 1
+fi
 
-  # auto start VM
-  if [ -z $force ]; then
-    echo 
-    read -p 'Do you want to start the VM [y/N]: ' res
-    if [ $res == 'y' ] || [ $res == 'Y' ]; then
-      cd $installpath
-      vagrant up
-    else 
-      installion_success
-    fi
-  else
+# auto start VM
+if [ -z $force ]; then
+  echo 
+  read -p 'Do you want to start the VM [y/N]: ' res
+  if [ $res == 'y' ] || [ $res == 'Y' ]; then
+    cd $installpath
+    vagrant up
+  else 
     installion_success
   fi
+else
+  installion_success
 fi
