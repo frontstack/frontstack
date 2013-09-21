@@ -40,12 +40,12 @@ You can use FrontStack in other OS easily using VirtualBox and Vagrant
 
 3. Download FrontStack for VM installations
 
-Run the auto intallation script
-```
-$ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh > install.sh && bash install.sh
-```
+  Run the auto intallation script
+  ```
+  $ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh > install.sh && bash install.sh
+  ```
 
-or [download](https://github.com/frontstack/vagrant/archive/master.zip) it manually
+  or [download](https://github.com/frontstack/vagrant/archive/master.zip) it manually
 
 4. Customize `Vagrantfile` and `setup.ini` (optionally)
 
