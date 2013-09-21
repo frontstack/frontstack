@@ -57,6 +57,15 @@ If you have some Virtualbox problems while trying to boot the VM and get a messa
 `processor architecture is not 64 bits` and you are sure your processor it is, you should 
 try to enable the VT-x/AMD virtualization technology from your BIOS.
 
+## Software stack
+
+See the [stack repository](https://github.com/frontstack/stack) for more information about the software stack included
+
+## Issues 
+
+FrontStack is in beta stage, some things maybe are broken.
+Please, feel free to report any issue you experiment.
+
 ## Author
 
 * [Tomas Aparicio](https://github.com/h2non) 
