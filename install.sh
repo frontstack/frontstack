@@ -193,7 +193,7 @@ rm -rf "$installpath/vagrant-master"
 clean_files
 
 if [ $virtualize != '1' ]; then
-  bash $installpath/scripts/setup.sh
+  sudo bash $installpath/scripts/setup.sh
   installion_success
 else
   # configure Vagrant
