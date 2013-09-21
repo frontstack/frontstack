@@ -14,6 +14,7 @@ output='./frontstack.log'
 vagrant_download="https://github.com/frontstack/vagrant/archive/master.tar.gz"
 filename='frontstack-vagrant.tar.gz'
 testcon='test.html'
+virtualize=1
 
 clean_files() {
   rm -rf $filename
@@ -112,7 +113,7 @@ if [ $os == 'GNU/Linux' ]; then
   read -p 'Do you want to virtualize FrontStack anyway? [Y/n]: ' virtualize
 fi
 
-if [ -z $virtualize ] || [ $virtualize == 'y' ] || [ $virtualize == 'Y' ]; then
+if [ $virtualize == '1' ] || [ $virtualize == 'y' ] || [ $virtualize == 'Y' ]; then
   if [ `exists VirtualBox` -eq 0 ]; then
     echo 'VirtualBox not found on the system. You must install it before continue'
     echo 'https://www.virtualbox.org/wiki/Downloads'
