@@ -11,7 +11,7 @@
 #
 
 output='./frontstack.log'
-download="https://github.com/frontstack/vagrant/archive/master.tar.gz"
+vagrant_download="https://github.com/frontstack/vagrant/archive/master.tar.gz"
 filename='frontstack-vagrant.tar.gz'
 testcon='test.html'
 
@@ -58,11 +58,11 @@ if [ "`uname -m`" != "x86_64" ]; then
 fi
 
 if [ "$(uname)" == "Darwin" ]; then
-  OS='Darwin/OSX'    
+  os='Darwin/OSX'    
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  OS='GNU/Linux'
+  os='GNU/Linux'
 elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-  OS='Cygwin Windows' 
+  os='Cygwin Windows' 
   echo 'Note that Cygwin platform is under experimental support'
 else
   echo 'Platform not suported.'
@@ -86,7 +86,7 @@ cat <<EOF
        for modern web projects 
  -------------------------------------
 
- OS detected: $OS
+ OS detected: $os
 
  Requirements:
   * 64 bit OS
@@ -107,16 +107,23 @@ if [ -f "./$testcon" ]; then
   rm -rf "./$testcon"
 fi
 
-if [ `exists VirtualBox` -eq 0 ]; then
-  echo 'VirtualBox not found on the system.\nYou must install it before continue'
-  echo 'https://www.virtualbox.org/wiki/Downloads'
-  exit 1
+if [ $os == 'GNU/Linux' ];
+  echo 'You are running GNU/Linux'
+  read -p 'Do you want to virtualize FrontStack anyway? [Y/n]: ' virtualize
 fi
 
-if [ `exists vagrant` -eq 0 ]; then
-  echo 'Vagrant not found on the system.\nYou must install it before continue'
-  echo 'http://downloads.vagrantup.com/'
-  exit 1
+if [ -z $virtualize ] || [ $virtualize == 'y' ] || [ $virtualize == 'Y' ]; then
+  if [ `exists VirtualBox` -eq 0 ]; then
+    echo 'VirtualBox not found on the system. You must install it before continue'
+    echo 'https://www.virtualbox.org/wiki/Downloads'
+    exit 1
+  fi
+
+  if [ `exists vagrant` -eq 0 ]; then
+    echo 'Vagrant not found on the system. You must install it before continue'
+    echo 'http://downloads.vagrantup.com/'
+    exit 1
+  fi
 fi
 
 while getopts "f:p:" OPTION; do
@@ -168,7 +175,7 @@ fi
 
 echo 'Downloading FrontStack Vagrant files...'
 
-$dl_binary $filename $download > $output 2>&1
+$dl_binary $filename vagrant_download > $output 2>&1
 check_exit "Error while downloading the package Vagrant from Github... See $output"
 
 tar xvfz ./$filename -C "$installpath" >> $output 2>&1
