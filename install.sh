@@ -102,7 +102,7 @@ EOF
 
 # checking prerequirements
 
-$dl_binary $testcon http://yahoo.com > $output 2>&1
+`$dl_binary $testcon http://yahoo.com > $output 2>&1`
 check_exit "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $output"
 if [ -f "./$testcon" ]; then
   rm -rf "./$testcon"
