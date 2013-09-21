@@ -15,13 +15,24 @@ Forget about dev environments, just code!
 
 ### GNU/Linux
 
-Simply download the setup.sh and configure the setup.ini file with your custom settings.
+1. Download the tarball
+```
+$ wget https://sourceforge.net/projects/frontstack/files/latest/download -O frontstack-latest.tar.gz
+```
 
-You can provision you machine downloading a full stack release version (tar.gz, 7z , package-specific OS).
+2. Then install it in a custom path
+```
+$ tar xvfz frontstack-latest.tar.gz -C $HOME/fronstack
+```
 
-### Virtual + Vagrant
+3. Use the environment specific variables
+```
+$ cd ~/frontstack && ./bash.sh
+```
 
-The FrontStack distribution is only available for GNU/Linux, however you can use it in other OS easily using VirtualBox and Vagrant
+### Other OS (virtualized)
+
+You can use FrontStack in other OS easily using VirtualBox and Vagrant
 
 1. Download [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your OS (64 bits)
 
@@ -30,16 +41,15 @@ The FrontStack distribution is only available for GNU/Linux, however you can use
 3. Download FrontStack for VM installations
 
 Run the auto intallation script
-```shell
+```
 $ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh > install.sh && bash install.sh
 ```
 
-or [download](https://github.com/frontstack/vagrant/archive/master.zip)  it manually
+or [download](https://github.com/frontstack/vagrant/archive/master.zip) it manually
 
 4. Customize `Vagrantfile` and `setup.ini` (optionally)
 
 5. Run `$ vagrant up`
-
 
 ##### Virtualization troubles
 
