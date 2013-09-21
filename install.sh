@@ -107,7 +107,7 @@ if [ -f "./$testcon" ]; then
   rm -rf "./$testcon"
 fi
 
-if [ $os == 'GNU/Linux' ];
+if [ $os == 'GNU/Linux' ]; then
   echo 'You are running GNU/Linux'
   read -p 'Do you want to virtualize FrontStack anyway? [Y/n]: ' virtualize
 fi
