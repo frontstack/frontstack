@@ -9,6 +9,8 @@ Self-contained, portable and ready-to-run GNU/Linux x64 software stack for moder
 FrontStack aims to provide a complete development environment for 
 modern Front End web projects based on a technologic stack powered by Node.js, Ruby or Python.
 
+Forget about dev environments, just code!
+
 ## Installation
 
 ### GNU/Linux

@@ -46,7 +46,7 @@ FrontStack Vagrant installed in '$installpath'
 
 1. Customize the Vagrantfile
 2. Customize setup.ini and aditional provisioning scripts
-3. Run $ vagrant up
+3. Run $ vagrant up 
 4. Start coding!
 
 EOF
@@ -192,23 +192,28 @@ cp -R "$installpath"/vagrant-master/* "$installpath"
 rm -rf "$installpath/vagrant-master"
 clean_files
 
-# configure Vagrant
-if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ]; then
-  echo 'Configuring Vagrant...'
-  vagrant plugin install vagrant-vbguest >> $output 2>&1
-  check_exit "Error while installing Vagrant plugin... See $output" 1
-fi
+if [ $virtualize != '1' ]; then
+  bash $installpath/scripts/setup.sh
+  installion_success
+else
+  # configure Vagrant
+  if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ]; then
+    echo 'Configuring Vagrant...'
+    vagrant plugin install vagrant-vbguest >> $output 2>&1
+    check_exit "Error while installing Vagrant plugin... See $output" 1
+  fi
 
-# auto start VM
-if [ -z $force ]; then
-  echo 
-  read -p 'Do you want to start the VM [y/N]: ' res
-  if [ $res == 'y' ] || [ $res == 'Y' ]; then
-    cd $installpath
-    vagrant up
-  else 
+  # auto start VM
+  if [ -z $force ]; then
+    echo 
+    read -p 'Do you want to start the VM [y/N]: ' res
+    if [ $res == 'y' ] || [ $res == 'Y' ]; then
+      cd $installpath
+      vagrant up
+    else 
+      installion_success
+    fi
+  else
     installion_success
   fi
-else
-  installion_success
 fi
