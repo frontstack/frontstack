@@ -10,7 +10,7 @@
 #   -p <installpath>  [installation path]
 #
 
-output='./frontstack.log'
+output='frontstack.log'
 vagrant_download="https://github.com/frontstack/vagrant/archive/master.tar.gz"
 filename='frontstack-vagrant.tar.gz'
 testcon='test.html'
