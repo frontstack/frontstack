@@ -1,4 +1,4 @@
-# FrontStack Vagrant
+# FrontStack
 
 Self-contained, portable and ready-to-run GNU/Linux x64 software stack for modern web projects development.
 
