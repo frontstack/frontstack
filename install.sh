@@ -112,7 +112,7 @@ if [ $os == 'GNU/Linux' ]; then
   echo 'You are running GNU/Linux :)'
   read -p 'Do you want to virtualize FrontStack anyway? [Y/n]: ' res 
   if [ $res != 'y' ] && [ $res != 'Y' ]; then
-    $virtualize=0
+    virtualize=0
   fi 
 fi
 
