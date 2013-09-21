@@ -179,8 +179,7 @@ fi
 
 echo 'Downloading FrontStack Vagrant files...'
 
-echo $dl_binary $filename vagrant_download
-`$dl_binary $filename vagrant_download > $output 2>&1`
+`$dl_binary $filename $vagrant_download > $output 2>&1`
 check_exit "Error while downloading the package Vagrant from Github... See $output"
 
 tar xvfz ./$filename -C "$installpath" >> $output 2>&1
