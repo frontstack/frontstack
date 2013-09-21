@@ -109,11 +109,14 @@ if [ -f "./$testcon" ]; then
 fi
 
 if [ $os == 'GNU/Linux' ]; then
-  echo 'You are running GNU/Linux'
-  read -p 'Do you want to virtualize FrontStack anyway? [Y/n]: ' virtualize
+  echo 'You are running GNU/Linux :)'
+  read -p 'Do you want to virtualize FrontStack anyway? [Y/n]: ' res 
+  if [ $res != 'y' ] && [ $res != 'Y' ]; then
+    $virtualize=0
+  fi 
 fi
 
-if [ $virtualize == '1' ] || [ $virtualize == 'y' ] || [ $virtualize == 'Y' ]; then
+if [ $virtualize == '1' ]; then
   if [ `exists VirtualBox` -eq 0 ]; then
     echo 'VirtualBox not found on the system. You must install it before continue'
     echo 'https://www.virtualbox.org/wiki/Downloads'
