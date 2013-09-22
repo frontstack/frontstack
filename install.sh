@@ -217,7 +217,6 @@ fi
 
 if [ $virtualize == '0' ]; then
   echo 
-  echo 'Download FrontStack environment...'
   `wget -F $fs_download -O $temp_download > $output 2>&1 && echo $? > $status_download || echo $? > $status_download` &
   download_status $output $status_download
   check_exit "Error while trying to download FrontStack. See $output"

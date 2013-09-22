@@ -13,7 +13,7 @@ Forget about dev environments, just code!
 
 ## Installation
 
-### Virtualized
+### 
 
 You can eaisly run FrontStack in any OS using VirtualBox and Vagrant
 
@@ -21,20 +21,29 @@ You can eaisly run FrontStack in any OS using VirtualBox and Vagrant
 
 2. Download [Vagrant](http://downloads.vagrantup.com/) for your OS (64 bits)
 
-3. Download FrontStack for VM installations
+3. Download FrontStack for virtualized solutions installations
 
-  Run the auto intallation script
+  Run the intallation script
   ```
   $ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh > install.sh && bash install.sh
   ```
 
-  or [download](https://github.com/frontstack/vagrant/archive/master.zip) it manually
+  or [download](https://github.com/frontstack/vagrant/archive/master.zip) it manually in Windows
 
 4. Customize `Vagrantfile` and `setup.ini` (optionally)
 
-5. Run `vagrant up` and then `vagrant ssh`
+5. Run from the installation directory: 
+  
+  ```
+  $ vagrant up 
+  ```
 
-### GNU/Linux
+  And finally:
+  ```
+  $ vagrant ssh
+  ```
+
+### Manual installation for GNU/Linux
 
 1. Download the tarball
 ```
@@ -49,6 +58,12 @@ $ tar xvfz frontstack-latest.tar.gz -C $HOME/fronstack
 3. Use the environment specific variables
 ```
 $ cd ~/frontstack && ./bash.sh
+```
+
+If you want to load the environment variables, add in your `~/.bash_profile` the following:
+
+```shell
+[ -f ~/fronstack/scripts/setenv.sh ] && . "~/fronstack/scripts/setenv.sh"
 ```
 
 ##### Virtualization troubles
