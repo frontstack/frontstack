@@ -13,22 +13,22 @@ Forget about dev environments, just code!
 
 ## Installation
 
-### 
+### Virtualized
 
-You can eaisly run FrontStack in any OS using VirtualBox and Vagrant
+You can easily run FrontStack in any OS using [VirtualBox](https://www.virtualbox.org) and [Vagrant](http://vagrantup.com)
 
 1. Download [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your OS (64 bits)
 
 2. Download [Vagrant](http://downloads.vagrantup.com/) for your OS (64 bits)
 
-3. Download FrontStack for virtualized solutions installations
+3. Download FrontStack for virtual installations
 
   Run the intallation script
   ```
   $ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh > install.sh && bash install.sh
   ```
 
-  or [download](https://github.com/frontstack/vagrant/archive/master.zip) it manually in Windows
+  or [download](https://github.com/frontstack/vagrant/archive/master.zip) it manually (generally under Windows)
 
 4. Customize `Vagrantfile` and `setup.ini` (optionally)
 
@@ -38,7 +38,7 @@ You can eaisly run FrontStack in any OS using VirtualBox and Vagrant
   $ vagrant up 
   ```
 
-  And finally:
+  and if all goes fine, run:
   ```
   $ vagrant ssh
   ```
@@ -60,13 +60,13 @@ $ tar xvfz frontstack-latest.tar.gz -C $HOME/fronstack
 $ cd ~/frontstack && ./bash.sh
 ```
 
-If you want to load the environment variables, add in your `~/.bash_profile` the following:
+If you want to load the environment variables on each bash session, add in your `~/.bash_profile` the following line:
 
 ```shell
 [ -f ~/fronstack/scripts/setenv.sh ] && . "~/fronstack/scripts/setenv.sh"
 ```
 
-##### Virtualization troubles
+##### Possible virtualization troubles
 
 If you have some Virtualbox problems while trying to boot the VM and get a message like 
 `processor architecture is not 64 bits` and you are sure your processor it is, you should 
