@@ -125,8 +125,7 @@ cat <<EOF
   * 2GB RAM
   * 2GB of hard disk free space
   * Internet access (HTTP/s protocol)
-  * VirtualBox
-  * Vagrant 
+  * VirtualBox & Vagrant (only for virtualization)
 
 
 EOF
