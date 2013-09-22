@@ -57,6 +57,19 @@ If you have some Virtualbox problems while trying to boot the VM and get a messa
 `processor architecture is not 64 bits` and you are sure your processor it is, you should 
 try to enable the VT-x/AMD virtualization technology from your BIOS.
 
+## Update 
+
+You can easily upgrade the whole FrontStack environment simply running the following script:
+
+```shell
+$  ~/scripts/update.sh
+```
+
+Note that all files and directories will be overwritten, except the `packages/` directory.
+
+You probably will need to instal Node or Ruby packages via it's own package manager, right? And what happens if I do an upgrade?
+All the Node packages or Ruby gems you install during your development will be installed at the `packages/` directory and this will be ignored by the update process, so all the packages will remain after updates.
+
 ## Software stack
 
 See the [stack repository](https://github.com/frontstack/stack) for more information about the software stack included
