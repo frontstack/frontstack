@@ -14,6 +14,8 @@ output='frontstack.log'
 fs_download='http://sourceforge.net/projects/frontstack/files/latest/download'
 vagrant_download="https://github.com/frontstack/vagrant/archive/master.tar.gz"
 filename='frontstack-vagrant.tar.gz'
+temp_download='/tmp/frontstack-latest.tar.gz'
+status_download='/tmp/frontstack-download'
 testcon='test.html'
 virtualize=1
 
@@ -21,6 +23,8 @@ clean_files() {
   rm -rf $filename
   rm -rf $output
   rm -rf $testcon
+  rm -rf $temp_download
+  rm -rf $status_download
 }
 
 exists() {
@@ -214,13 +218,12 @@ fi
 if [ $virtualize == '0' ]; then
   echo 
   echo 'Download FrontStack environment...'
-  `wget -F $fs_download -O /tmp/frontstack-latest.tar.gz > $output 2>&1 && echo $? > /tmp/frontstack_download || echo $? > /tmp/frontstack_download` &
-  download_status $output /tmp/frontstack_download
+  `wget -F $fs_download -O $temp_download > $output 2>&1 && echo $? > $status_download || echo $? > $status_download` &
+  download_status $output $status_download
   check_exit "Error while trying to download FrontStack. See $output"
 
-  echo 
   echo -n 'Extracting (this may take some minutes)... '
-  tar xvfz /tmp/frontstack-latest.tar.gz -C "$installpath" >> $output 2>&1
+  tar xvfz $temp_download -C "$installpath" >> $output 2>&1
   echo 'done!'
 
   cat <<EOF
@@ -247,7 +250,6 @@ else
 
   # clean files
   rm -rf "$installpath/vagrant-master"
-  clean_files
 
   # configure Vagrant
   if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ]; then
@@ -271,3 +273,6 @@ else
   fi
 
 fi
+
+# clean
+clean_files
