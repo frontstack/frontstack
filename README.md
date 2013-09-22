@@ -32,7 +32,7 @@ You can easily run FrontStack in any OS using [VirtualBox](https://www.virtualbo
 
 4. Customize `Vagrantfile` and `setup.ini` (optionally)
 
-5. From the Vagrantfile directory, run: 
+5. From the `Vagrantfile` directory, run: 
   
   ```
   $ vagrant up 
