@@ -101,8 +101,8 @@ else
   echo 'Platform not suported.'
   exit 1
 fi
-
-# discover the http client
+ 
+# discover the http client binary
 if [ `exists curl` -eq 1 ]; then
   dl_binary="`which curl` -L -s -o " 
 else
@@ -130,7 +130,7 @@ cat <<EOF
 
 EOF
 
-# checking prerequirements
+# checking system prerequirements
 
 `$dl_binary $testcon http://yahoo.com > $output 2>&1`
 check_exit "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $output"
@@ -272,5 +272,4 @@ else
 
 fi
 
-# clean
 clean_files
