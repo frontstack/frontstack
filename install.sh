@@ -66,7 +66,6 @@ elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
   echo 'Note that Cygwin platform is under experimental support'
 else
   echo 'Platform not suported.'
-  echo 'You probably are under Windows, so think about if you are a fucking loser'
   exit 1
 fi
 
@@ -110,6 +109,7 @@ fi
 if [ $os == 'GNU/Linux' ]; then
   echo 'You are running GNU/Linux :)'
   echo 'Note that you can use FrontStack without virtualization!'
+  echo
   sleep 1
 fi
 
