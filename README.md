@@ -15,7 +15,7 @@ Forget about dev environments, just code!
 
 ### Virtualized
 
-You can use FrontStack in other OS easily using VirtualBox and Vagrant
+You can eaisly run FrontStack in any OS using VirtualBox and Vagrant
 
 1. Download [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your OS (64 bits)
 
