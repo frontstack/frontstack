@@ -214,7 +214,7 @@ fi
 if [ $virtualize == '0' ]; then
   echo 
   echo 'Download FrontStack environment...'
-  `wget $(proxy_auth) -F $fs_download -O /tmp/frontstack-latest.tar.gz > $output 2>&1 && echo $? > /tmp/frontstack_download || echo $? > /tmp/frontstack_download` &
+  `wget -F $fs_download -O /tmp/frontstack-latest.tar.gz > $output 2>&1 && echo $? > /tmp/frontstack_download || echo $? > /tmp/frontstack_download` &
   download_status $output /tmp/frontstack_download
   check_exit "Error while trying to download FrontStack. See $output"
 
