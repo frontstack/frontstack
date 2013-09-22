@@ -13,24 +13,7 @@ Forget about dev environments, just code!
 
 ## Installation
 
-### GNU/Linux
-
-1. Download the tarball
-```
-$ wget https://sourceforge.net/projects/frontstack/files/latest/download -O frontstack-latest.tar.gz
-```
-
-2. Then install it in a custom path
-```
-$ tar xvfz frontstack-latest.tar.gz -C $HOME/fronstack
-```
-
-3. Use the environment specific variables
-```
-$ cd ~/frontstack && ./bash.sh
-```
-
-### Other OS (virtualized)
+### Virtualized
 
 You can use FrontStack in other OS easily using VirtualBox and Vagrant
 
@@ -49,7 +32,24 @@ You can use FrontStack in other OS easily using VirtualBox and Vagrant
 
 4. Customize `Vagrantfile` and `setup.ini` (optionally)
 
-5. Run `$ vagrant up`
+5. Run `vagrant up` and then `vagrant ssh`
+
+### GNU/Linux
+
+1. Download the tarball
+```
+$ wget https://sourceforge.net/projects/frontstack/files/latest/download -O frontstack-latest.tar.gz
+```
+
+2. Then install it in a custom path
+```
+$ tar xvfz frontstack-latest.tar.gz -C $HOME/fronstack
+```
+
+3. Use the environment specific variables
+```
+$ cd ~/frontstack && ./bash.sh
+```
 
 ##### Virtualization troubles
 
