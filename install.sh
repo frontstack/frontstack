@@ -11,9 +11,11 @@
 #
 
 output='frontstack.log'
+fs_download='http://sourceforge.net/projects/frontstack/files/latest/download'
 vagrant_download="https://github.com/frontstack/vagrant/archive/master.tar.gz"
 filename='frontstack-vagrant.tar.gz'
 testcon='test.html'
+virtualize=1
 
 clean_files() {
   rm -rf $filename
@@ -35,6 +37,33 @@ check_exit() {
     echo $1
     clean_files
     [ -z $2 ] && exit 1
+  fi
+}
+
+download_status() {
+  if [ -f $1 ]; then
+    while : ; do
+      sleep 1
+
+      local speed=$(echo `cat $1 | grep -oh '\([0-9.]\+[%].*[0-9.][s|m|h|d]\)' | tail -1`)
+      echo -n "Downloading... $speed"
+      echo -n R | tr 'R' '\r'
+
+      if [ -f $2 ]; then
+        sleep 1
+        local error=$(echo `cat $2`)
+        if [ $error != '0' ]; then
+          echo 
+          if [ $error == '6' ]; then
+            echo "Server authentication error, configure setup.ini properly. See $output"
+          else
+            echo "Download error, exit code '$error'. See $output"
+          fi
+          exit $?
+        fi
+        break
+      fi
+    done
   fi
 }
 
@@ -110,19 +139,25 @@ if [ $os == 'GNU/Linux' ]; then
   echo 'You are running GNU/Linux :)'
   echo 'Note that you can use FrontStack without virtualization!'
   echo
+  read -p 'Do you want to virtualize anyway? [n/Y]: ' res
+  if [ $res != 'y' ] && [ $res != 'Y' ]; then
+    virtualize=0
+  fi
   sleep 1
 fi
 
-if [ `exists VirtualBox` -eq 0 ]; then
-  echo 'VirtualBox not found on the system. You must install it before continue'
-  echo 'https://www.virtualbox.org/wiki/Downloads'
-  exit 1
-fi
+if [ $virtualize == '1' ]; then
+  if [ `exists VirtualBox` -eq 0 ]; then
+    echo 'VirtualBox not found on the system. You must install it before continue'
+    echo 'https://www.virtualbox.org/wiki/Downloads'
+    exit 1
+  fi
 
-if [ `exists vagrant` -eq 0 ]; then
-  echo 'Vagrant not found on the system. You must install it before continue'
-  echo 'http://downloads.vagrantup.com/'
-  exit 1
+  if [ `exists vagrant` -eq 0 ]; then
+    echo 'Vagrant not found on the system. You must install it before continue'
+    echo 'http://downloads.vagrantup.com/'
+    exit 1
+  fi
 fi
 
 while getopts "f:p:" OPTION; do
@@ -172,38 +207,63 @@ else
   fi
 fi
 
-echo 'Downloading FrontStack Vagrant files...'
-
-`$dl_binary $filename $vagrant_download > $output 2>&1`
-check_exit "Error while downloading the package Vagrant from Github... See $output"
-
-tar xvfz ./$filename -C "$installpath" >> $output 2>&1
-check_exit "Error while uncompressing the package... See $output"
-
-# move files to root directory
-cp -R "$installpath"/vagrant-master/* "$installpath"
-
-# clean files
-rm -rf "$installpath/vagrant-master"
-clean_files
-
-# configure Vagrant
-if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ]; then
-  echo 'Configuring Vagrant...'
-  vagrant plugin install vagrant-vbguest >> $output 2>&1
-  check_exit "Error while installing Vagrant plugin... See $output" 1
-fi
-
-# auto start VM
-if [ -z $force ]; then
+if [ $virtualize == '0' ]; then
   echo 
-  read -p 'Do you want to start the VM [y/N]: ' res
-  if [ $res == 'y' ] || [ $res == 'Y' ]; then
-    cd $installpath
-    vagrant up
-  else 
+  echo 'Download FrontStack environment...'
+  `wget $(proxy_auth) -F $fs_download -O /tmp/frontstack-latest.tar.gz > $output 2>&1 && echo $? > /tmp/frontstack_download || echo $? > /tmp/frontstack_download` &
+  download_status $output /tmp/frontstack_download
+  check_exit "Error while trying to download FrontStack. See $output"
+
+  echo 
+  echo -n 'Extracting (this may take some minutes)... '
+  tar xvfz /tmp/frontstack-latest.tar.gz -C "$installpath" >> $output 2>&1
+  echo 'done!'
+
+  cat <<EOF
+
+FrontStack installed in: "$install_dir"
+
+To have fun, simply run:
+$ $installpath/bash.sh
+
+EOF
+
+else
+
+  echo 'Downloading FrontStack Vagrant files...'
+
+  `$dl_binary $filename $vagrant_download > $output 2>&1`
+  check_exit "Error while downloading the package Vagrant from Github... See $output"
+
+  tar xvfz ./$filename -C "$installpath" >> $output 2>&1
+  check_exit "Error while uncompressing the package... See $output"
+
+  # move files to root directory
+  cp -R "$installpath"/vagrant-master/* "$installpath"
+
+  # clean files
+  rm -rf "$installpath/vagrant-master"
+  clean_files
+
+  # configure Vagrant
+  if [ $(exists `vagrant plugin list | grep vagrant-vbguest`) -eq 1 ]; then
+    echo 'Configuring Vagrant...'
+    vagrant plugin install vagrant-vbguest >> $output 2>&1
+    check_exit "Error while installing Vagrant plugin... See $output" 1
+  fi
+
+  # auto start VM
+  if [ -z $force ]; then
+    echo 
+    read -p 'Do you want to start the VM [y/N]: ' res
+    if [ $res == 'y' ] || [ $res == 'Y' ]; then
+      cd $installpath
+      vagrant up
+    else 
+      installion_success
+    fi
+  else
     installion_success
   fi
-else
-  installion_success
+
 fi
