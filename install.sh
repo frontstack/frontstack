@@ -225,7 +225,7 @@ if [ $virtualize == '0' ]; then
 
   cat <<EOF
 
-FrontStack installed in: "$install_dir"
+FrontStack installed in: "$installpath"
 
 To have fun, simply run:
 $ $installpath/bash.sh
