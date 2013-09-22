@@ -87,7 +87,26 @@ All the Node packages or Ruby gems you install during your development will be i
 
 ## Software stack
 
-See the [stack repository](https://github.com/frontstack/stack) for more information about the software stack included
+* Node 
+  * npm 
+  * Yeoman 
+  * Grunt-cli 
+  * Bower 
+  * Node-gyp 
+* Ruby 
+  * RubyGems 
+  * Compass
+  * Sass
+  * eventmachine
+  * Rake 
+* Python 
+* PhantomJS
+* SlimerJS 
+* CasperJS
+
+See the [stack repository](https://github.com/frontstack/stack) for more information about versions
+
+For new packages requests, please [open](https://github.com/frontstack/stack/issues) a Github issue with your request.
 
 ## Issues 
 
