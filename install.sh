@@ -261,6 +261,7 @@ else
     echo 
     read -p 'Do you want to start the VM [y/N]: ' res
     if [ $res == 'y' ] || [ $res == 'Y' ]; then
+      clean_files
       cd $installpath
       vagrant up
     else 
