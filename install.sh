@@ -27,6 +27,11 @@ clean_files() {
   rm -rf $status_download
 }
 
+exit_ok() {
+  echo $1
+  exit 0
+}
+
 exists() {
   type $1 >/dev/null 2>&1;
   if [ $? -eq 0 ]; then
@@ -180,15 +185,15 @@ done
 
 if [ -z $force ]; then 
   read -p 'Do you want to install FrontStack [Y/n]: ' res
+  [ -z $res ] && exit_ok 'Exiting' 
   if [ $res == 'n' ] || [ $res == 'N' ]; then
-    echo 'Exiting'
-    exit 0
+    exit_ok 'Exiting'
   fi
 fi
 
 # supports first argument for path installation
 if [ -z $installpath ]; then
-  read -p "Installation path (defaults to '$HOME'): " installpath
+  read -p "Installation path (defaults to '$HOME/frontstack'): " installpath
 fi
 
 if [ -z $installpath ]; then
