@@ -17,11 +17,9 @@ Forget about dev environments, just code!
 
 You can easily run FrontStack in any OS using [VirtualBox](https://www.virtualbox.org) and [Vagrant](http://vagrantup.com)
 
-1. Download [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your OS (64 bits)
+1. Download [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](http://downloads.vagrantup.com/) for your OS (64 bits)
 
-2. Download [Vagrant](http://downloads.vagrantup.com/) for your OS (64 bits)
-
-3. Download FrontStack for virtual installations
+2. Download FrontStack for virtual installations
 
   Run the intallation script
   ```
@@ -30,9 +28,9 @@ You can easily run FrontStack in any OS using [VirtualBox](https://www.virtualbo
 
   or [download](https://github.com/frontstack/vagrant/archive/master.zip) it manually (generally under Windows)
 
-4. Customize `Vagrantfile` and `setup.ini` (optionally)
+3. Customize `Vagrantfile` and `setup.ini` (optionally)
 
-5. From the `Vagrantfile` directory, run: 
+4. From the `Vagrantfile` directory, run: 
   
   ```
   $ vagrant up 
@@ -52,10 +50,10 @@ $ wget https://sourceforge.net/projects/frontstack/files/latest/download -O fron
 
 2. Then install it in a custom path
 ```
-$ tar xvfz frontstack-latest.tar.gz -C $HOME/fronstack
+$ mkdir ~/frontstack/ && tar xvfz frontstack-latest.tar.gz -C ~/fronstack
 ```
 
-3. Use the environment specific variables
+3. Use the environment specific bash session
 ```
 $ cd ~/frontstack && ./bash.sh
 ```
@@ -93,6 +91,7 @@ All the Node packages or Ruby gems you install during your development will be i
   * Grunt-cli 
   * Bower 
   * Node-gyp 
+  * coffee-script
 * Ruby 
   * RubyGems 
   * Compass
