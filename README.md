@@ -26,7 +26,9 @@ You can easily run FrontStack in any OS using [VirtualBox](https://www.virtualbo
   $ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh > install.sh && bash install.sh
   ```
 
-  or [download](https://github.com/frontstack/vagrant/archive/master.zip) it manually (generally under Windows)
+  If are an unlucky guy and you are running Windows, you should do all the installation stuff manually. 
+
+  Click [here](https://github.com/frontstack/vagrant/archive/master.zip) to download. Then simply follow the [README](https://github.com/frontstack/vagrant/blob/master/README.md) instructions.
 
 3. Customize `Vagrantfile` and `setup.ini` (optionally)
 
