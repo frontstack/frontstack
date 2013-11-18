@@ -17,6 +17,7 @@ filename='frontstack-vagrant.tar.gz'
 temp_download='/tmp/frontstack-latest.tar.gz'
 status_download='/tmp/frontstack-download'
 testcon='test.html'
+install_script=$1
 virtualize=1
 
 clean_files() {
@@ -25,6 +26,7 @@ clean_files() {
   rm -rf $testcon
   rm -rf $temp_download
   rm -rf $status_download
+  rm -rf $install_script
 }
 
 exit_ok() {
