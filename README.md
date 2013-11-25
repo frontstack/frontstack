@@ -7,15 +7,15 @@ Self-contained, portable and ready-to-run GNU/Linux x64 software stack for moder
 ## About
 
 FrontStack aims to provide a complete development environment for 
-modern Front End web projects based on a technologic stack powered by Node.js, Ruby or Python.
+modern Front End web projects based on a technologic stack powered by Node.js, Ruby or Python
 
-Forget about dev environments, just code!
+Forget about development environments, just code!
 
 ## Installation
 
 ### Virtualized
 
-You can easily run FrontStack in any OS using [VirtualBox](https://www.virtualbox.org) and [Vagrant](http://vagrantup.com)
+You can easily run FrontStack in any OS using VirtualBox and Vagrant
 
 1. Download [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](http://downloads.vagrantup.com/) for your OS (64 bits)
 
@@ -28,11 +28,13 @@ You can easily run FrontStack in any OS using [VirtualBox](https://www.virtualbo
 
   If are an unlucky guy and you are running Windows, you should do all the installation stuff manually. 
 
-  Click [here](https://github.com/frontstack/vagrant/archive/master.zip) to download. Then simply follow the [README](https://github.com/frontstack/vagrant/blob/master/README.md) instructions.
+  Click [here](https://github.com/frontstack/vagrant/archive/master.zip) to download the latest version.
 
-3. Customize `Vagrantfile` and `setup.ini` (optionally)
+  Then unzip it and simply follow the [README](https://github.com/frontstack/vagrant/blob/master/README.md) instructions.
 
-4. From the `Vagrantfile` directory, run: 
+2.1. Customize `Vagrantfile` and `setup.ini` (optionally)
+
+3. From the `Vagrantfile` directory, run: 
   
   ```
   $ vagrant up 
@@ -91,15 +93,15 @@ All the Node packages or Ruby gems you install during your development will be i
   * npm 
   * Yeoman 
   * Grunt-cli 
-  * Bower 
+  * Bower
   * Node-gyp 
   * coffee-script
 * Ruby 
-  * RubyGems 
+  * RubyGems
   * Compass
   * Sass
   * eventmachine
-  * Rake 
+  * Rake
 * Python 
 * PhantomJS
 * SlimerJS 
