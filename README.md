@@ -23,7 +23,7 @@ You can easily run FrontStack in any OS using VirtualBox and Vagrant
 
   Run the intallation script
   ```
-  $ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh > install.sh && bash install.sh
+  $ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh | bash
   ```
 
   If are an unlucky guy and you are running Windows, you should do all the installation stuff manually. 
