@@ -26,6 +26,7 @@ Forget about development environments, just code!
 
 - GNU/Linux is a consistent and reliable UNIX-like OS
 - Fully portable (runs in any GNU/Linux distro)
+- No OS configuration setup or specific requirements
 - Virtualization today is lightweight
 - One unique environment: reproducible, consistent, reliable
 - Avoid provide support or maintain multiple platforms or dev environments
