@@ -204,7 +204,7 @@ else
   if [ -z $force ] && [ -f $installpath/Vagrantfile ]; then
     echo "Another installation was found in '$installpath'"
     read -p 'Do you want to override it? [Y/n]: ' res
-    if [ $res == 'n' ] || [ $res == 'N' ]; then
+    if [ -z $res ] || [ $res == 'n' ] || [ $res == 'N' ]; then
       echo 'Exiting'
       exit 0
     fi
