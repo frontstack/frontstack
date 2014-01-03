@@ -275,6 +275,7 @@ else
         installion_success
       fi
     else
+      # force VM setup from bash installation      
       start_vm
     fi
   else
