@@ -92,7 +92,6 @@ start_vm() {
 
 installion_success() {
       cat <<EOF
-
 FrontStack Vagrant installed in '$installpath'
 
 1. Customize the Vagrantfile
