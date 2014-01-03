@@ -50,7 +50,6 @@ You can easily run FrontStack in any OS using VirtualBox and Vagrant
   If are an unlucky guy and you are running Windows, you should do all the installation stuff manually. 
 
   Click [here](https://github.com/frontstack/vagrant/archive/master.zip) to download the latest version.
-
   Then unzip it and simply follow the [README](https://github.com/frontstack/vagrant/blob/master/README.md) instructions.
 
 3. Customize `Vagrantfile` and `setup.ini` (optionally)
