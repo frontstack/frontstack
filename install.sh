@@ -275,8 +275,6 @@ else
       else 
         installion_success
       fi
-    else
-      start_vm
     fi
   else
     installion_success
