@@ -1,6 +1,6 @@
 # FrontStack
 
-Self-contained, portable and ready-to-run GNU/Linux x64 software stack for modern web development
+Self-contained, portable and ready-to-run GNU/Linux software stack for modern web development
 
 ## About
 
