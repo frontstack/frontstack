@@ -275,6 +275,8 @@ else
       else 
         installion_success
       fi
+    else
+      installion_success
     fi
   else
     installion_success
