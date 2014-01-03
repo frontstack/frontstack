@@ -108,6 +108,10 @@ Note that all files and directories will be overwritten, except the `packages/` 
 You probably will need to instal Node or Ruby packages via it's own package manager, right? And what happens if I do an upgrade?
 All the Node packages or Ruby gems you install during your development will be installed at the `packages/` directory and this will be ignored by the update process, so all the packages will remain after updates.
 
+## Requirements
+
+See the [stack requirements](https://github.com/frontstack/stack#requirements)
+
 ## Software stack
 
 * Node 

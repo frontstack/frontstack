@@ -2,7 +2,7 @@
 #
 # FrontStack installation script
 # @author Tomas Aparicio
-# @version 0.1
+# @version 0.2
 # @license WTFPL
 #
 # Optional arguments:
@@ -91,12 +91,6 @@ FrontStack Vagrant installed in '$installpath'
 EOF
 }
 
-# check OS architecture
-if [ "`uname -m`" != "x86_64" ]; then
-   echo "FrontStack only supports 64 bit OS. Cannot continue"
-   exit 1
-fi
-
 if [ "$(uname)" == "Darwin" ]; then
   os='Darwin/OSX'    
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
@@ -122,25 +116,29 @@ cat <<EOF
          Welcome to FrontStack
  -------------------------------------
    Development environment made easy 
-       for modern web projects 
+      for modern web development 
  -------------------------------------
 
  OS detected: $os
 
  Requirements:
-  * 64 bit OS
-  * 2GB RAM
-  * 2GB of hard disk free space
+  * GNU/Linux 64 bit
+  * 512MB RAM (>=768MB recommended)
+  * 2GB HDD
   * Internet access (HTTP/s protocol)
-  * VirtualBox & Vagrant (only for virtualization)
 
 
 EOF
 
-# checking system prerequirements
+# check OS architecture
+if [ "`uname -m`" != "x86_64" ]; then
+   echo "FrontStack only supports 64 bit OS. Cannot continue"
+   exit 1
+fi
 
+# checking system prerequirements
 `$dl_binary $testcon http://yahoo.com > $output 2>&1`
-check_exit "No Internet HTTP connectivity. Check if you are behind a proxy and your authentication credentials. See $output"
+check_exit "Cannot connect to the Internet. Check if you are behind a proxy.\nSee $output"
 if [ -f "./$testcon" ]; then
   rm -rf "./$testcon"
 fi
