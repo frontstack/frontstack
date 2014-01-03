@@ -139,3 +139,7 @@ Please, feel free to report any issue you experiment via Github.
 ## Author
 
 * [Tomas Aparicio](https://github.com/h2non) 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/frontstack/frontstack/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
