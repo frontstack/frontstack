@@ -125,7 +125,7 @@ cat <<EOF
   * GNU/Linux 64 bit
   * 512MB RAM (>=768MB recommended)
   * 2GB HDD
-  * Internet access (HTTP/s protocol)
+  * Internet access (HTTP/S)
 
 
 EOF
