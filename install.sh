@@ -29,8 +29,14 @@ clean_files() {
   rm -rf $install_script
 }
 
+exit_clean() {
+  clean_files
+  exit $1
+}
+
 exit_ok() {
   echo $1
+  clean_files
   exit 0
 }
 
@@ -162,13 +168,13 @@ if [ $virtualize == '1' ]; then
   if [ `exists VirtualBox` -eq 0 ]; then
     echo 'VirtualBox not found on the system. You must install it before continue'
     echo 'https://www.virtualbox.org/wiki/Downloads'
-    exit 1
+    exit_clean 1
   fi
 
   if [ `exists vagrant` -eq 0 ]; then
     echo 'Vagrant not found on the system. You must install it before continue'
     echo 'http://downloads.vagrantup.com/'
-    exit 1
+    exit_clean 1
   fi
 fi
 
@@ -193,7 +199,7 @@ if [ -z $installpath ]; then
 else
   if [ ! -d $installpath ]; then
     echo "'$installpath' is not a directory or not exists. Exiting"
-    exit 1
+    exit_clean 1
   fi
 fi
 
@@ -206,7 +212,7 @@ else
     read -p 'Do you want to override it? [Y/n]: ' res
     if [ -z $res ] || [ $res == 'n' ] || [ $res == 'N' ]; then
       echo 'Exiting'
-      exit 0
+      exit_clean 0
     fi
   fi
 fi
