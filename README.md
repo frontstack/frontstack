@@ -42,7 +42,7 @@ You can easily run FrontStack in any OS using VirtualBox and Vagrant
 
 2. Download FrontStack for virtual installations
 
-  Run the intallation script
+  Run the installation script
   ```
   $ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh | bash
   ```
