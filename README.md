@@ -24,7 +24,8 @@ Forget about development environments, just code!
 
 ## Why FrontStack?
 
-- GNU/Linux is a consistent and reliable UNIX-like OS 
+- GNU/Linux is a consistent and reliable UNIX-like OS
+- Fully portable (runs in any GNU/Linux distro)
 - Virtualization today is lightweight
 - One unique environment: reproducible, consistent, reliable
 - Avoid provide support or maintain multiple platforms or dev environments
