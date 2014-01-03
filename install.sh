@@ -84,6 +84,12 @@ download_status() {
   fi
 }
 
+start_vm() {
+  clean_files
+  cd $installpath
+  vagrant up
+}
+
 installion_success() {
       cat <<EOF
 
@@ -91,8 +97,8 @@ FrontStack Vagrant installed in '$installpath'
 
 1. Customize the Vagrantfile
 2. Customize setup.ini and aditional provisioning scripts
-3. Run $ vagrant up 
-4. Start coding!
+3. Run 'vagrant up' 
+4. Put your code in the workspace directory
 
 EOF
 }
@@ -263,12 +269,14 @@ else
   if [ -z $force ]; then
     echo 
     read -p 'Do you want to start the VM [y/N]: ' res
-    if [ $res == 'y' ] || [ $res == 'Y' ]; then
-      clean_files
-      cd $installpath
-      vagrant up
-    else 
-      installion_success
+    if [ ! -z $res ]; then
+      if [ $res == 'y' ] || [ $res == 'Y' ]; then
+        start_vm
+      else 
+        installion_success
+      fi
+    else
+      start_vm
     fi
   else
     installion_success
