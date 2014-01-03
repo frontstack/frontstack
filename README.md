@@ -1,18 +1,37 @@
 # FrontStack
 
-Self-contained, portable and ready-to-run GNU/Linux x64 software stack for modern web projects development.
-
-`FrontStack is in beta stage`
+Self-contained, portable and ready-to-run GNU/Linux x64 software stack for modern web development
 
 ## About
 
 FrontStack aims to provide a complete development environment for 
-modern Front End web projects based on a technologic stack powered by Node.js, Ruby or Python
+modern web development based on a software stack powered by Node.js, Ruby and Python
 
 Forget about development environments, just code!
 
-## Installation
+## Features
 
+- GNU/Linux
+- 64 bits (yes! we're in 2014, it's time to switch)
+- Multiplatform (using VirtualBox and Vagrant)
+- Fully self-contained without OS-level shared libraries dependencies
+- Great isolation from the OS
+- Configurable from an `ini` file
+- Support for package provisioning
+- Easy to install and use
+- Easy to use from CI and deployment environments
+- Support for software stack updates
+
+## Why FrontStack?
+
+- GNU/Linux is a consistent and reliable UNIX-like OS 
+- Virtualization today is lightweight
+- One unique environment: reproducible, consistent, reliable
+- Avoid provide support or maintain multiple platforms or dev environments
+- Most CI servers runs GNU/Linux, provide the same environment to the developers
+
+## Installation
+ 
 ### Virtualized
 
 You can easily run FrontStack in any OS using VirtualBox and Vagrant
@@ -32,9 +51,9 @@ You can easily run FrontStack in any OS using VirtualBox and Vagrant
 
   Then unzip it and simply follow the [README](https://github.com/frontstack/vagrant/blob/master/README.md) instructions.
 
-2.1. Customize `Vagrantfile` and `setup.ini` (optionally)
+3. Customize `Vagrantfile` and `setup.ini` (optionally)
 
-3. From the `Vagrantfile` directory, run: 
+4. From the `Vagrantfile` directory, run: 
   
   ```
   $ vagrant up 
@@ -65,7 +84,7 @@ $ cd ~/frontstack && ./bash.sh
 If you want to load the environment variables on each bash session, add in your `~/.bash_profile` the following line:
 
 ```shell
-[ -f ~/fronstack/scripts/setenv.sh ] && . "~/fronstack/scripts/setenv.sh"
+[ -f ~/fronstack/scripts/setenv.sh ] && . ~/fronstack/scripts/setenv.sh
 ```
 
 ##### Possible virtualization troubles
@@ -92,28 +111,27 @@ All the Node packages or Ruby gems you install during your development will be i
 * Node 
   * npm 
   * Yeoman 
-  * Grunt-cli 
+  * Grunt CLI
   * Bower
+  * Croak
   * Node-gyp 
-  * coffee-script
+  * CoffeeScript
 * Ruby 
   * RubyGems
   * Compass
   * Sass
-  * eventmachine
-  * Rake
 * Python 
 * PhantomJS
 * SlimerJS 
 * CasperJS
 
-See the [stack repository](https://github.com/frontstack/stack) for more information about versions
+See the [stack repository](https://github.com/frontstack/stack) for more information and specific versions
 
-For new packages requests, please [open](https://github.com/frontstack/stack/issues) a Github issue with your request.
+For new packages requests, please [open](https://github.com/frontstack/stack/issues) a Github issue with your request
 
 ## Issues 
 
-FrontStack is in beta stage, some things maybe are broken.
+FrontStack is still in beta stage.
 Please, feel free to report any issue you experiment via Github.
 
 ## Author
