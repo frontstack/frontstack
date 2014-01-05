@@ -21,7 +21,7 @@ Forget about development environments, just code!
 - Easy to install and use
 - Easy to use from CI and deployment environments
 - Support for software stack updates
-- Node.js environment ready-to-use with Grunt, Yeoman, Bower and more
+- Dev utilities ready-to-use with Grunt, Yeoman, Bower, Compass and more
 
 ## Why FrontStack?
 
