@@ -88,7 +88,7 @@ $ cd ~/frontstack && ./bash.sh
 If you want to load the environment variables on each bash session, add in your `~/.bash_profile` the following line:
 
 ```shell
-[ -f ~/fronstack/scripts/setenv.sh ] && . ~/fronstack/scripts/setenv.sh
+[ -f ~/frontstack/scripts/setenv.sh ] && . ~/frontstack/scripts/setenv.sh
 ```
 
 ##### Possible virtualization troubles
