@@ -21,6 +21,7 @@ Forget about development environments, just code!
 - Easy to install and use
 - Easy to use from CI and deployment environments
 - Support for software stack updates
+- Node.js environment ready-to-use with Grunt, Yeoman, Bower and more
 
 ## Why FrontStack?
 
@@ -31,6 +32,8 @@ Forget about development environments, just code!
 - Unique environment: reproducible, consistent, reliable
 - Avoid provide support or maintain multiple platforms or dev environments
 - Most CI servers runs GNU/Linux, provide the same environment to the end developers
+- Automatically package provisioning
+- Pre-installed common dev tools like Grunt, Yeoman, Bower and Compass
 
 ## Installation
  
@@ -38,7 +41,7 @@ Forget about development environments, just code!
 
 You can easily run FrontStack in any OS using VirtualBox and Vagrant
 
-1. Download [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](http://downloads.vagrantup.com/) for your OS (64 bits)
+1. Download [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](http://downloads.vagrantup.com/) for your OS (64 bit)
 
 2. Download FrontStack for virtual installations
 
