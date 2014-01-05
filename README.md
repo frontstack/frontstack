@@ -77,7 +77,7 @@ $ wget https://sourceforge.net/projects/frontstack/files/latest/download -O fron
 
 2. Then install it in a custom path
 ```
-$ mkdir ~/frontstack/ && tar xvfz frontstack-latest.tar.gz -C ~/fronstack
+$ mkdir ~/frontstack/ && tar xvfz frontstack-latest.tar.gz -C ~/frontstack
 ```
 
 3. Use the environment specific bash session
