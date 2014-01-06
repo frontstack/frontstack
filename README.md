@@ -21,7 +21,7 @@ Forget about development environments, just code!
 - Easy to install and use
 - Easy to use from CI and deployment environments
 - Support for software stack updates
-- Dev utilities ready-to-use with Grunt, Yeoman, Bower, Compass and more
+- Pre-installed dev tools like Grunt, Yeoman, Bower, Compass and more
 
 ## Why FrontStack?
 
