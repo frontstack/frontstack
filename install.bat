@@ -7,7 +7,7 @@
 
 WHERE /Q git
 IF ERRORLEVEL 1 (
-  :: if not in PATH, auto discover the git binary
+  :: if it's not in PATH, auto discover the git binary
   IF EXIST "%LOCALAPPDATA%\Programs\Git\bin\git.exe" (
     SET PATH=%LOCALAPPDATA%\Programs\Git\bin;%PATH%
   ) ELSE (
