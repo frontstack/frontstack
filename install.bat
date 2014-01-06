@@ -5,6 +5,10 @@
 :: @license WTFPL
 ::
 
+ECHO.
+ECHO FrontStack installer script for Windows
+ECHO.
+
 WHERE /Q git
 IF ERRORLEVEL 1 (
   :: if it's not in PATH, auto discover the git binary
@@ -40,10 +44,6 @@ IF EXIST frontstack (
   PAUSE
   EXIT 1
 )
-
-ECHO.
-ECHO FrontStack installer script for Windows
-ECHO.
 
 :: clone the repository
 git clone https://github.com/frontstack/vagrant frontstack
