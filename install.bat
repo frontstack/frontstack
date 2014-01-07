@@ -8,6 +8,8 @@
 ECHO.
 ECHO FrontStack installer script for Windows
 ECHO.
+ECHO This process normally takes some time... please be patient
+ECHO.
 
 WHERE /Q git
 IF ERRORLEVEL 1 (
