@@ -50,10 +50,7 @@ You can easily run FrontStack in any OS using VirtualBox and Vagrant
   $ curl -s https://raw.github.com/frontstack/frontstack/master/install.sh | bash
   ```
 
-  If are an unlucky guy and you are running Windows, you should do all the installation stuff manually. 
-
-  Click [here](https://github.com/frontstack/vagrant/archive/master.zip) to download the latest version.
-  Then unzip it and simply follow the [README](https://github.com/frontstack/vagrant/blob/master/README.md) instructions.
+  If are an unlucky guy and you are running Windows, you can use the [install.bat][1] script (Git required)
 
 3. Customize `Vagrantfile` and `setup.ini` (optionally)
 
@@ -149,3 +146,4 @@ Please, feel free to report any issue you experiment via Github.
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/frontstack/frontstack/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
+[1]: https://github.com/frontstack/frontstack/raw/master/install.bat
