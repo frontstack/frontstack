@@ -21,7 +21,7 @@ IF ERRORLEVEL 1 (
       IF EXIST "%PROGRAMFILES(x86)%\Git\bin\git.exe" (
         SET PATH=%PROGRAMFILES(x86)%\Git\bin;%PATH%
       ) ELSE (
-         ECHO Cannot find Git
+         ECHO Git is required!
          ECHO Seems like Git is not installed. You must install it to continue
          PAUSE
          EXIT 1
@@ -32,10 +32,12 @@ IF ERRORLEVEL 1 (
 
 WHERE /Q vagrant
 IF ERRORLEVEL 1 (
-  ECHO Vagrant is required!
-  ECHO Seems like Vagrant is not installed. You must install it to continue
-  PAUSE
-  EXIT 1
+  IF NOT EXIST "%HOMEDRIVE%\HashiCorp\vagrant" (
+    ECHO Vagrant is required!
+    ECHO Seems like Vagrant is not installed. You must install it to continue
+    PAUSE
+    EXIT 1
+  )
 )
 
 IF EXIST frontstack (
