@@ -36,7 +36,7 @@ Forget about development environments, just code!
 - Pre-installed common dev tools like Grunt, Yeoman, Bower and Compass
 
 ## Installation
- 
+        
 ### Virtualized
 
 You can easily run FrontStack in any OS using VirtualBox and Vagrant

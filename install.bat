@@ -6,6 +6,19 @@
 ::
 
 ECHO.
+ECHO -------------------------------------
+ECHO         Welcome to FrontStack
+ECHO -------------------------------------
+ECHO   Development environment made easy 
+ECHO      for modern web development 
+ECHO -------------------------------------
+ECHO.
+ECHO Host requirements:
+ECHO  * Windows XP/Vista/7/8 (64 bit)
+ECHO  * 4GB RAM
+ECHO  * 4GB HDD
+ECHO  * Internet access (HTTP/S)
+ECHO.
 ECHO FrontStack installer script for Windows
 ECHO.
 ECHO This process normally takes some time... please be patient
