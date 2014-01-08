@@ -6,12 +6,12 @@
 ::
 
 ECHO.
-ECHO  -------------------------------------
-ECHO         Welcome to FrontStack
-ECHO  -------------------------------------
-ECHO    Development environment made easy 
-ECHO      for modern web projects 
-ECHO  -------------------------------------
+ECHO  --------------------------------------
+ECHO          Welcome to FrontStack
+ECHO  --------------------------------------
+ECHO    Development environment stack made
+ECHO       easy for modern web projects 
+ECHO  --------------------------------------
 ECHO.
 ECHO  Host requirements:
 ECHO   * Windows XP/Vista/7/8 (64 bit)

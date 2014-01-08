@@ -123,12 +123,12 @@ fi
 
 cat <<EOF
 
- -------------------------------------
+ --------------------------------------
          Welcome to FrontStack
- -------------------------------------
-   Development environment made easy 
-      for modern web development 
- -------------------------------------
+ --------------------------------------
+   Development environment stack made
+     easy for modern web projects 
+ --------------------------------------
 
  OS detected: $os
 
