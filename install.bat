@@ -10,7 +10,7 @@ ECHO -------------------------------------
 ECHO         Welcome to FrontStack
 ECHO -------------------------------------
 ECHO   Development environment made easy 
-ECHO      for modern web development 
+ECHO      for modern web projects 
 ECHO -------------------------------------
 ECHO.
 ECHO Host requirements:
@@ -69,7 +69,13 @@ cd frontstack
 vagrant up
 
 ECHO.
-ECHO FrontStack installed sucessfully!
+ECHO FrontStack Vagrant installed in '$installpath'
+ECHO. 
+ECHO 1. Customize the Vagrantfile
+ECHO 2. Customize setup.ini and aditional provisioning scripts
+ECHO 3. Run 'vagrant ssh' or connect to SSH localhost:2222  
+ECHO 4. Put your code in the workspace directory
+ECHO FrontStack installed sucessfully! 
 ECHO.
 ECHO Now you can access to the VM using a SSH client like putty
 ECHO SSH server listening on localhost:2222
