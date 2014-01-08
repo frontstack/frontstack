@@ -69,16 +69,12 @@ cd frontstack
 vagrant up
 
 ECHO.
-ECHO FrontStack Vagrant installed in '$installpath'
+ECHO FrontStack Vagrant installed in 'frontstack/'
 ECHO. 
-ECHO 1. Customize the Vagrantfile
-ECHO 2. Customize setup.ini and aditional provisioning scripts
-ECHO 3. Run 'vagrant ssh' or connect to SSH localhost:2222  
-ECHO 4. Put your code in the workspace directory
-ECHO FrontStack installed sucessfully! 
+ECHO 1. Run 'vagrant ssh' or connect via SSH to localhost:2222  
+ECHO 2. Put your code in 'workspace/' directory
 ECHO.
-ECHO Now you can access to the VM using a SSH client like putty
-ECHO SSH server listening on localhost:2222
+ECHO Thanks for using FrontStack
 ECHO.
 
 PAUSE
