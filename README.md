@@ -96,7 +96,7 @@ try to enable the VT-x/AMD virtualization technology from your BIOS.
 
 ## Update 
 
-You can easily upgrade the whole FrontStack environment running∫:
+You can easily upgrade the whole FrontStack environment running:
 
 ```shell
 $  frontstack update
