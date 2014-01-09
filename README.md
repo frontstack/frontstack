@@ -37,7 +37,7 @@ Forget about development environments, just code!
 
 ## Installation
         
-### Virtualized
+### Virtualized 
 
 You can easily run FrontStack in any OS using VirtualBox and Vagrant
 
@@ -96,16 +96,41 @@ try to enable the VT-x/AMD virtualization technology from your BIOS.
 
 ## Update 
 
-You can easily upgrade the whole FrontStack environment simply running the following script:
+You can easily upgrade the whole FrontStack environment running∫:
 
 ```shell
-$  ~/scripts/update.sh
+$  frontstack update
 ```
+
+The update script is located in `fronstack/scripts/update.sh`
 
 Note that all files and directories will be overwritten, except the `packages/` directory.
 
 You probably will need to instal Node or Ruby packages via it's own package manager, right? And what happens if I do an upgrade?
 All the Node packages or Ruby gems you install during your development will be installed at the `packages/` directory and this will be ignored by the update process, so all the packages will remain after updates.
+
+## FrontStack CLI
+
+```
+  FrontStack CLI commands:
+
+  update
+    Update FrontStack if new versions are available
+  version  
+    Show the current FrontStack version
+  where [package]
+    Show path where a given packages is located
+  info
+    Show FrontStack project useful links
+  help
+    Show this info
+
+  Examples:
+
+  $ fronstack update
+  $ fronstack where ruby
+
+```
 
 ## Requirements
 
