@@ -6,7 +6,7 @@
 # @license WTFPL
 #
 # Optional arguments:
-#   -f <1>            [force installation without asking]
+#   -f                [force installation without asking]
 #   -p <installpath>  [installation path]
 #
 
@@ -90,7 +90,7 @@ start_vm() {
   vagrant up
 }
 
-installion_success() {
+installation_success() {
       cat <<EOF
 FrontStack Vagrant installed in '$installpath'
 
@@ -272,14 +272,14 @@ else
       if [ $res == 'y' ] || [ $res == 'Y' ]; then
         start_vm
       else 
-        installion_success
+        installation_success
       fi
     else
       # force VM setup from bash installation      
       start_vm
     fi
   else
-    installion_success
+    installation_success
   fi
 
 fi
