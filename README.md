@@ -123,24 +123,26 @@ format = tar.gz
 user = vagrant
 ;; flush iptables rules and allow all by default
 reset_firewall = true
+;; custom post-install script to run
+post_install = /home/vagrant/setup/post-install.sh
 
 [proxy]
 http_proxy = http://my.proxy:3128
 https_proxy = https://ssl.proxy:3128
 no_proxy = .company.com
 ;; proxy auth credentials, if it's required
-proxy_user = john
-proxy_password = 1234
+user = john
+password = 1234
 
 [provision]
 ;; list of OS packages to install (whitespace separated)
 packages = git nmap
-;; customized install bash script for custom provisioning (runs on guest machine)
-script = /home/vagrant/setup/post-install.sh
 ;; Node.js packages to install (whitespace separated)
 npm = http-server harp
 ;; Ruby gems to install (whitespace separated)
 gem = heel sinatra
+;; customized install bash script for custom provisioning (runs on guest machine)
+script = /home/vagrant/setup/provision.sh
 ```
 
 ## FrontStack CLI
