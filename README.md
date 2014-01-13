@@ -99,7 +99,7 @@ try to enable the VT-x/AMD virtualization technology from your BIOS.
 You can easily upgrade the whole FrontStack environment running:
 
 ```shell
-$  frontstack update
+$ frontstack update
 ```
 
 The update script is located in `fronstack/scripts/update.sh`
@@ -111,9 +111,9 @@ All the Node packages or Ruby gems you install during your development will be i
 
 ## Configuration
 
-You can eaisly configure the FrontStack from a simple `ini` file called setup.ini (see the [Vagrant][2] repository)
+You can easily configure the FrontStack from a simple `ini` file called setup.ini (see the [Vagrant][2] repository)
 
-Here a complete `setup.ini` example file with in-line comments
+Here a complete `setup.ini` example file
 
 ```ini
 [frontstack]
@@ -132,12 +132,12 @@ fs_user=vagrant
 fs_reset_firewall=1
 
 [proxy]
-;http_proxy=http://my.proxy:3128
-;https_proxy=https://ssl.proxy:3128
-;no_proxy=.company.com
+http_proxy=http://my.proxy:3128
+https_proxy=https://ssl.proxy:3128
+no_proxy=.company.com
 ;; proxy auth credentials, if it's required
-;proxy_user=admin
-;proxy_password=test
+proxy_user=john
+proxy_password=1234
 
 [provision]
 ;; list of OS packages to install (whitespace separated)
