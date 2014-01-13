@@ -111,7 +111,7 @@ All the Node packages or Ruby gems you install during your development will be i
 
 ## Configuration
 
-You can easily configure the FrontStack from a simple `ini` file called setup.ini (see the [Vagrant][2] repository)
+You can easily configure the FrontStack from a simple `setup…ini` file (see the [Vagrant][2] repository)
 
 Here a complete `setup.ini` example file. You should comment the options you don't need
 
