@@ -168,7 +168,7 @@ script = /home/vagrant/setup/provision.sh
 
 ```
 
-#### Possible virtualization troubles
+## Possible virtualization troubles
 
 ##### Processor architecture
 
