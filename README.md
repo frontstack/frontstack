@@ -102,7 +102,7 @@ You can easily upgrade the whole FrontStack environment running:
 $ frontstack update
 ```
 
-The update script is located in `fronstack/scripts/update.sh`
+The update script is located in `frontstack/scripts/update.sh`
 
 Note that all files and directories will be overwritten, except the `packages/` directory.
 
