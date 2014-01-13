@@ -246,7 +246,7 @@ See the [stack requirements](https://github.com/frontstack/stack#requirements)
 
 ## Issues 
 
-Feel free to report any issue you experiment via Github.
+Feel free to report any issue you experiment via [Github][4]
 
 ## Author
 
@@ -258,3 +258,4 @@ Feel free to report any issue you experiment via Github.
 [1]: https://github.com/frontstack/frontstack/raw/master/install.bat
 [2]: https://github.com/frontstack/vagrant
 [3]: https://www.virtualbox.org/manual/ch04.html#sharedfolders
+[4]: https://github.com/frontstack/stack/issues
