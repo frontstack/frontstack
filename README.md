@@ -246,8 +246,7 @@ See the [stack requirements](https://github.com/frontstack/stack#requirements)
 
 ## Issues 
 
-FrontStack is still in beta stage.
-Please, feel free to report any issue you experiment via Github.
+Feel free to report any issue you experiment via Github.
 
 ## Author
 
