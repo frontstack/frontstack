@@ -87,25 +87,6 @@ If you want to load the environment variables on each bash session, add in your 
 ```shell
 [ -f ~/frontstack/scripts/setenv.sh ] && . ~/frontstack/scripts/setenv.sh
 ```
-
-#### Possible virtualization troubles
-
-##### Processor architecture
-
-If you have some Virtualbox problems while trying to boot the VM and get a message like 
-`processor architecture is not 64 bits` and you are sure your processor it is, you should 
-try to enable the VT-x/AMD virtualization technology from your BIOS.
-
-##### VBox Guest Additions version mismatch
-
-To avoid issues with the VirtualBox Guest Additions installation and versions mismatch, 
-you should install the `vagrant-vbguest` plugin
-
-From the Vagrantfile directory, run:
-```
-$ vagrant plugin install vagrant-vbguest
-```
-
 ## Update 
 
 You can easily upgrade the whole FrontStack environment running:
@@ -185,6 +166,38 @@ gem=heel sinatra
 
 ```
 
+#### Possible virtualization troubles
+
+##### Processor architecture
+
+If you have some Virtualbox problems while trying to boot the VM and get a message like 
+`processor architecture is not 64 bits` and you are sure your processor it is, you should 
+try to enable the VT-x/AMD virtualization technology from your BIOS.
+
+##### VBox Guest Additions version mismatch
+
+To avoid issues with the VirtualBox Guest Additions installation and versions mismatch, 
+you should install the `vagrant-vbguest` plugin
+
+From the Vagrantfile directory, run:
+```
+$ vagrant plugin install vagrant-vbguest
+```
+
+##### Error mounting shared folders
+
+If you get an error like:
+```
+Stderr from the command:
+/sbin/mount.vboxsf: mounting failed with the error: No such device
+```
+
+From VirtualBox window, select your VM, open the configuration and select `Shared Folders` dialog box.
+Add a Machine Folder with the host folder as Folder Path, and hostshare (or whatever you want) as Folder Name. 
+Set Auto-Mount (?) and Make Permanent
+
+For more information, see the [VirtualBox documentation][3]
+
 ## Requirements
 
 See the [stack requirements](https://github.com/frontstack/stack#requirements)
@@ -226,3 +239,4 @@ Please, feel free to report any issue you experiment via Github.
 
 [1]: https://github.com/frontstack/frontstack/raw/master/install.bat
 [2]: https://github.com/frontstack/vagrant
+[3]: https://www.virtualbox.org/manual/ch04.html#sharedfolders
