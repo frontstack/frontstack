@@ -109,6 +109,47 @@ Note that all files and directories will be overwritten, except the `packages/` 
 You probably will need to instal Node or Ruby packages via it's own package manager, right? And what happens if I do an upgrade?
 All the Node packages or Ruby gems you install during your development will be installed at the `packages/` directory and this will be ignored by the update process, so all the packages will remain after updates.
 
+## Configuration
+
+You can eaisly configure the FrontStack from a simple `ini` file called setup.ini (see the [Vagrant][2] repository)
+
+Here a complete `setup.ini` example file with in-line comments
+
+```ini
+[frontstack]
+;; guest OS installation path
+fs_install=/home/vagrant/frontstack
+;; frontstack tarball URL to download
+fs_download=http://sourceforge.net/projects/frontstack/files/latest/download
+;; http credentials to download the tarball, if it's required
+;fs_http_user=username
+;fs_http_password=password
+;; tarball compression format, supported: tar.gz, zip and 7z
+fs_format=tar.gz
+;; user to asign permissiongs to frontstack files
+fs_user=vagrant
+;; flush iptables rules and allow all by default
+fs_reset_firewall=1
+
+[proxy]
+;http_proxy=http://my.proxy:3128
+;https_proxy=https://ssl.proxy:3128
+;no_proxy=.company.com
+;; proxy auth credentials, if it's required
+;proxy_user=admin
+;proxy_password=test
+
+[provision]
+;; list of OS packages to install (whitespace separated)
+install_packages=git nmap
+;; customized post-install bash script (runs on guest machine)
+install_script=/home/vagrant/setup/post-install.sh
+;; Node.js packages to install (whitespace separated)
+npm=http-server harp
+;; Ruby gems to install (whitespace separated)
+gem=heel sinatra
+```
+
 ## FrontStack CLI
 
 ```
@@ -172,3 +213,4 @@ Please, feel free to report any issue you experiment via Github.
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/frontstack/frontstack/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 [1]: https://github.com/frontstack/frontstack/raw/master/install.bat
+[2]: https://github.com/frontstack/vagrant
