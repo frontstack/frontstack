@@ -113,7 +113,7 @@ All the Node packages or Ruby gems you install during your development will be i
 
 You can easily configure the FrontStack from a simple `ini` file called setup.ini (see the [Vagrant][2] repository)
 
-Here a complete `setup.ini` example file
+Here a complete `setup.ini` example file. You should comment the options you don't need
 
 ```ini
 [frontstack]
@@ -122,8 +122,8 @@ fs_install=/home/vagrant/frontstack
 ;; frontstack tarball URL to download
 fs_download=http://sourceforge.net/projects/frontstack/files/latest/download
 ;; http credentials to download the tarball, if it's required
-;fs_http_user=username
-;fs_http_password=password
+fs_http_user=john
+fs_http_password=1234
 ;; tarball compression format, supported: tar.gz, zip and 7z
 fs_format=tar.gz
 ;; user to asign permissiongs to frontstack files
