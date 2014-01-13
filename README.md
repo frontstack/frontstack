@@ -111,36 +111,36 @@ Here a complete `setup.ini` example file. You should comment the options you don
 ```ini
 [frontstack]
 ;; guest OS installation path
-fs_install=/home/vagrant/frontstack
+install = /home/vagrant/frontstack
 ;; frontstack tarball URL to download
-fs_download=http://sourceforge.net/projects/frontstack/files/latest/download
+download = http://sourceforge.net/projects/frontstack/files/latest/download
 ;; http credentials to download the tarball, if it's required
-fs_http_user=john
-fs_http_password=1234
+http_user = john
+http_password = 1234
 ;; tarball compression format, supported: tar.gz, zip and 7z
-fs_format=tar.gz
+format = tar.gz
 ;; user to asign permissiongs to frontstack files
-fs_user=vagrant
+user = vagrant
 ;; flush iptables rules and allow all by default
-fs_reset_firewall=1
+reset_firewall = true
 
 [proxy]
-http_proxy=http://my.proxy:3128
-https_proxy=https://ssl.proxy:3128
-no_proxy=.company.com
+http_proxy = http://my.proxy:3128
+https_proxy = https://ssl.proxy:3128
+no_proxy = .company.com
 ;; proxy auth credentials, if it's required
-proxy_user=john
-proxy_password=1234
+proxy_user = john
+proxy_password = 1234
 
 [provision]
 ;; list of OS packages to install (whitespace separated)
-install_packages=git nmap
-;; customized post-install bash script (runs on guest machine)
-install_script=/home/vagrant/setup/post-install.sh
+packages = git nmap
+;; customized install bash script for custom provisioning (runs on guest machine)
+script = /home/vagrant/setup/post-install.sh
 ;; Node.js packages to install (whitespace separated)
-npm=http-server harp
+npm = http-server harp
 ;; Ruby gems to install (whitespace separated)
-gem=heel sinatra
+gem = heel sinatra
 ```
 
 ## FrontStack CLI
