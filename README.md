@@ -223,6 +223,15 @@ Set Auto-Mount (?) and Make Permanent
 
 For more information, see the [VirtualBox documentation][3]
 
+##### Completely remove a box
+
+A hard anbd effetive way to remove a box including the OS image will be via Vagrant CLI, 
+instead of doing it from VirtualBox GUI
+
+```
+$ vagrant box remove frontstack
+```
+
 ## Requirements
 
 See the [stack requirements](https://github.com/frontstack/stack#requirements)
