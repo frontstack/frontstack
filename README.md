@@ -35,6 +35,29 @@ Forget about development environments, just code!
 - Automatically package provisioning
 - Pre-installed common dev tools like Grunt, Yeoman, Bower and Compass
 
+## Software stack
+
+* Node 
+  * npm 
+  * Yeoman 
+  * Grunt CLI
+  * Bower
+  * Croak
+  * Node-gyp 
+  * CoffeeScript
+* Ruby 
+  * RubyGems
+  * Compass
+  * Sass
+* Python 
+* PhantomJS
+* SlimerJS 
+* CasperJS
+
+See the [stack repository](https://github.com/frontstack/stack) for more information and specific versions
+
+For new packages requests, please [open](https://github.com/frontstack/stack/issues) a Github issue with your request
+
 ## Installation
         
 ### Virtualized 
@@ -203,29 +226,6 @@ For more information, see the [VirtualBox documentation][3]
 ## Requirements
 
 See the [stack requirements](https://github.com/frontstack/stack#requirements)
-
-## Software stack
-
-* Node 
-  * npm 
-  * Yeoman 
-  * Grunt CLI
-  * Bower
-  * Croak
-  * Node-gyp 
-  * CoffeeScript
-* Ruby 
-  * RubyGems
-  * Compass
-  * Sass
-* Python 
-* PhantomJS
-* SlimerJS 
-* CasperJS
-
-See the [stack repository](https://github.com/frontstack/stack) for more information and specific versions
-
-For new packages requests, please [open](https://github.com/frontstack/stack/issues) a Github issue with your request
 
 ## Issues 
 
