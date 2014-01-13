@@ -88,11 +88,23 @@ If you want to load the environment variables on each bash session, add in your 
 [ -f ~/frontstack/scripts/setenv.sh ] && . ~/frontstack/scripts/setenv.sh
 ```
 
-##### Possible virtualization troubles
+#### Possible virtualization troubles
+
+##### Processor architecture
 
 If you have some Virtualbox problems while trying to boot the VM and get a message like 
 `processor architecture is not 64 bits` and you are sure your processor it is, you should 
 try to enable the VT-x/AMD virtualization technology from your BIOS.
+
+##### VBox Guest Additions version mismatch
+
+To avoid issues with the VirtualBox Guest Additions installation and versions mismatch, 
+you should install the `vagrant-vbguest` plugin
+
+From the Vagrantfile directory, run:
+```
+$ vagrant plugin install vagrant-vbguest
+```
 
 ## Update 
 
