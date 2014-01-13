@@ -105,10 +105,12 @@ $ mkdir ~/frontstack/ && tar xvfz frontstack-latest.tar.gz -C ~/frontstack
 $ cd ~/frontstack && ./bash.sh
 ```
 
-If you want to load the environment variables on each bash session, add in your `~/.bash_profile` the following line:
+If you want to load the environment variables on each bash session, add in your `~/.bash_profile` the following lines:
 
 ```shell
-[ -f ~/frontstack/scripts/setenv.sh ] && . ~/frontstack/scripts/setenv.sh
+if [ -f ./frontstack/scripts/setenv.sh ]; then
+  . ./frontstack/scripts/setenv.sh
+fi
 ```
 ## Update 
 
