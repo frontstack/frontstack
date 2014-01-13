@@ -171,10 +171,16 @@ script = /home/vagrant/setup/provision.sh
 ## FrontStack CLI
 
 ```
+$ frontstack help
+
   FrontStack CLI commands:
 
   update
     Update FrontStack if new versions are available
+  update-lock
+    Disable enviroment update
+  update-unlock
+    Enable enviroment updates
   version  
     Show the current FrontStack version
   where [package]
@@ -186,7 +192,7 @@ script = /home/vagrant/setup/provision.sh
 
   Examples:
 
-  $ fronstack update
+  $ frontstack update
   $ fronstack where ruby
 
 ```
