@@ -51,9 +51,12 @@ exists() {
 
 check_exit() {
   if [ $? -ne 0 ]; then
-    echo $1
     clean_files
-    [ -z $2 ] && exit 1
+    while [ -n "$1" ]; do
+       echo $ARGS "$1"
+       shift
+    done
+    exit 1
   fi
 }
 
@@ -147,13 +150,6 @@ if [ "`uname -m`" != "x86_64" ]; then
    exit 1
 fi
 
-# checking system prerequirements
-`$dl_binary $testcon http://yahoo.com > $output 2>&1`
-check_exit "Cannot connect to the Internet. Check if you are behind a proxy.\nSee $output"
-if [ -f "./$testcon" ]; then
-  rm -rf "./$testcon"
-fi
-
 if [ $os == 'GNU/Linux' ]; then
   echo 'You are running GNU/Linux :)'
   echo 'Note that you can use FrontStack without virtualization!'
@@ -226,7 +222,7 @@ if [ $virtualize == '0' ]; then
   echo 
   `wget -F $fs_download -O $temp_download > $output 2>&1 && echo $? > $status_download || echo $? > $status_download` &
   download_status $output $status_download
-  check_exit "Error while trying to download FrontStack. See $output"
+  check_exit "Error while downloading FrontStack" "Check if you have Internet connection" "Ouput log: $output"
 
   echo -n 'Extracting (this may take some minutes)... '
   tar xvfz $temp_download -C "$installpath" >> $output 2>&1

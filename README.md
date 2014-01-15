@@ -92,7 +92,7 @@ You can easily run FrontStack in any OS using VirtualBox and Vagrant
 
 1. Download the tarball
 ```
-$ wget https://sourceforge.net/projects/frontstack/files/latest/download -O frontstack-latest.tar.gz
+$ wget http://sourceforge.net/projects/frontstack/files/latest/download -O frontstack-latest.tar.gz
 ```
 
 2. Then install it in a custom path
@@ -251,7 +251,6 @@ Feel free to report any issue you experiment via [Github][4]
 ## Author
 
 * [Tomas Aparicio](https://github.com/h2non) 
-
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/frontstack/frontstack/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
