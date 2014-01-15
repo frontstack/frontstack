@@ -97,7 +97,7 @@ $ wget http://sourceforge.net/projects/frontstack/files/latest/download -O front
 
 2. Then install it in a custom path
 ```
-$ mkdir ~/frontstack/ && tar xvfz frontstack-latest.tar.gz -C ~/frontstack
+$ mkdir ~/frontstack && tar xvfz frontstack-latest.tar.gz -C ~/frontstack
 ```
 
 3. Use the environment specific bash session
@@ -129,9 +129,11 @@ All the Node packages or Ruby gems you install during your development will be i
 
 ## Configuration
 
-You can easily configure the FrontStack from a simple `setup…ini` file (see the [Vagrant][2] repository)
+You can easily configure the FrontStack from a simple `setup.ini` file (see the [Vagrant][2] repository)
 
-Here a complete `setup.ini` example file. You should comment the options you don't need
+> Note this file will be only used for virtual installations based on Vagrant
+
+A complete `setup.ini` example file. Feel free to comment the options you don't need
 
 ```ini
 [frontstack]
