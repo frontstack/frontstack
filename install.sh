@@ -2,7 +2,7 @@
 #
 # FrontStack installation script
 # @author Tomas Aparicio
-# @version 0.2
+# @version 0.3
 # @license WTFPL
 #
 # Optional arguments:
