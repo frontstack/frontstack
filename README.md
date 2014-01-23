@@ -201,7 +201,7 @@ $ frontstack help
 
 ```
 
-## Uninstalling
+## Uninstall
 
 An effective way to remove a box including the OS image will be via Vagrant CLI, 
 instead of doing it from VirtualBox GUI
@@ -210,7 +210,7 @@ instead of doing it from VirtualBox GUI
 $ vagrant box remove frontstack
 ```
 
-### Re-installing
+### Re-install
 
 To proceed with a complete environment re-installation, follow the next steps:
 
