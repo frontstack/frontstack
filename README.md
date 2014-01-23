@@ -212,15 +212,15 @@ $ vagrant box remove frontstack
 
 ### Re-install
 
-To proceed with a complete environment re-installation, follow the next steps:
+To proceed with a complete environment re-installation, please follow the next steps:
 
 1. Make a backup of the `workspace` directory (for your convenience)
 
 2. Remove the installed `fronstack` directory (usually it's located in your user home directory)
 
-3. Remove the FrontStack VM image and selecting "**remove all files**" from Virtualbox GUI
+3. Remove the FrontStack VM image and select "**remove all files**" from Virtualbox GUI
 
-4. Run the FrontStack [installation][instalaltion] again
+4. Follow the FrontStack [installation][installation] steps
 
 
 ## Possible troubles
