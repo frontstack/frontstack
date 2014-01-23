@@ -201,7 +201,29 @@ $ frontstack help
 
 ```
 
-## Possible virtualization troubles
+## Uninstalling
+
+An effective way to remove a box including the OS image will be via Vagrant CLI, 
+instead of doing it from VirtualBox GUI
+
+```
+$ vagrant box remove frontstack
+```
+
+### Re-installing
+
+To proceed with a complete environment re-installation, follow the next steps:
+
+1. Make a backup of the `workspace` directory (for your convenience)
+
+2. Remove the installed `fronstack` directory (usually it's located in your user home directory)
+
+3. Remove the FrontStack VM image and selecting "**remove all files**" from Virtualbox GUI
+
+4. Run the FrontStack [installation][instalaltion] again
+
+
+## Possible troubles
 
 ##### Processor architecture
 
@@ -233,15 +255,6 @@ Set Auto-Mount (?) and Make Permanent
 
 For more information, see the [VirtualBox documentation][3]
 
-##### Completely remove a box
-
-A hard anbd effetive way to remove a box including the OS image will be via Vagrant CLI, 
-instead of doing it from VirtualBox GUI
-
-```
-$ vagrant box remove frontstack
-```
-
 ## Requirements
 
 See the [stack requirements](https://github.com/frontstack/stack#requirements)
@@ -260,3 +273,5 @@ Feel free to report any issue you experiment via [Github][4]
 [2]: https://github.com/frontstack/vagrant
 [3]: https://www.virtualbox.org/manual/ch04.html#sharedfolders
 [4]: https://github.com/frontstack/stack/issues
+
+[installation]: https://github.com/frontstack/frontstack#installation
